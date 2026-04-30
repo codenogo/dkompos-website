@@ -142,22 +142,22 @@ button { font: inherit; }
 .footer-brand {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
+  gap: 0;
   font-family: var(--font-display);
   font-size: 17px;
   font-weight: 600;            /* nav scale — slightly less than wordmark 700 */
   letter-spacing: -0.005em;
   color: var(--text);
 }
-/* SVG mark — fixed pixel size + center alignment.
-   Em-based sizing leaves only a sliver visible at this scale because the
-   SVG has ~15-22% internal padding inside its viewBox. Hero scale
-   (clamp 56-116px) keeps the em-based approach since the proportions
-   work at large sizes. */
+/* SVG mark — fixed pixel size + center alignment. Negative margins
+   absorb the SVG's internal padding (~22% left, ~14% right) so the
+   visible D sits flush against "kompos" with no optical gap. */
 .brand img,
 .footer-brand img {
   width: 22px;
   height: 22px;
+  margin-left: -4px;
+  margin-right: -3px;
   flex-shrink: 0;
   user-select: none;
 }
