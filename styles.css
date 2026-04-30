@@ -887,20 +887,23 @@ section[id] {
 }
 
 /* Hero brand mark — replaces the "D" in "Dkompos" with the actual logo SVG.
-   Sized to match the cap-height of the surrounding letters; positioned to
-   sit on the text baseline. The SVG has ~15% internal padding so we use
-   a slight translateY to drop its visible D onto the baseline. */
+   Sized at 1.1em (not 1em) because:
+     1. The SVG has ~15% top/bottom internal padding, so visible D = 70% of
+        SVG height. To make visible D reach cap-height (~72% of font-size),
+        SVG must be slightly larger than 1em.
+     2. Round letters need optical overshoot — they look smaller than flat-
+        top letters at the same height. The D's rounded top wants to sit
+        a few percent above the cap-line.
+   translateY drops the visible D's bottom onto the text baseline. */
 .hero-mark {
   display: inline-block;
-  width: 1em;
-  height: 1em;
+  width: 1.1em;
+  height: 1.1em;
   flex-shrink: 0;
   align-self: baseline;
-  /* Pull the mark down so its visible D bottom aligns with the
-     "kompos" baseline, and tight against the next letter. */
-  transform: translateY(0.16em);
-  margin-right: -0.06em;
-  margin-left: -0.04em;
+  transform: translateY(0.2em);
+  margin-right: -0.08em;
+  margin-left: -0.06em;
   user-select: none;
 }
 
