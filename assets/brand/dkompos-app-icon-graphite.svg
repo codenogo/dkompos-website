@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title" shape-rendering="geometricPrecision">
+  <title id="title">Dkompos graphite app icon</title>
+  <defs>
+    <clipPath id="shape">
+      <rect width="1024" height="1024" rx="224"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#shape)">
+    <rect width="1024" height="1024" fill="#07080a"/>
+    <rect width="1024" height="1024" fill="#ffffff" opacity="0.035"/>
+  </g>
+  <g fill="#e7a953">
+    <path fill-rule="evenodd" d="M188 152h248c228 0 400 156 400 360S664 872 436 872H188Zm124 124v472h124c148 0 264-100 264-236S584 276 436 276Z"/>
+    <path d="M392 376v272l224-136Z"/>
+  </g>
+</svg>

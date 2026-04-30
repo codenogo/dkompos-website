@@ -1,0 +1,1061 @@
+/* =========================================================================
+   Dkompos — marketing site
+   Editorial. Restrained. Type-led. One signature element used once.
+   ======================================================================== */
+
+/* ---- Tokens ----------------------------------------------------------- */
+:root {
+  color-scheme: dark;
+
+  /* Surfaces */
+  --ink:            #050506;
+  --graphite:       #0c0d0f;
+  --graphite-up:    #14161a;
+  --parchment-bg:   #ece4d3;
+  --parchment-fg:   #f7f1e8;
+
+  /* Type colors */
+  --text:           #ece5d6;
+  --text-soft:      #c8c2b6;
+  --muted:          #8a877e;
+  --faint:          #555149;
+
+  /* Type colors for parchment-inverted section */
+  --on-light-ink:       #1a1610;
+  --on-light-soft:      #4a4438;
+  --on-light-faint:     #7a7468;
+
+  /* Single warm accent — used very sparingly */
+  --tungsten:       #d99a3e;
+  --tungsten-warm:  #e6ab53;
+
+  /* Hairlines — parchment-tinted, never pure white */
+  --line:           rgba(247, 241, 232, 0.09);
+  --line-mid:       rgba(247, 241, 232, 0.16);
+  --line-strong:    rgba(247, 241, 232, 0.28);
+  --line-on-light:  rgba(26, 22, 16, 0.14);
+  --line-on-light-mid: rgba(26, 22, 16, 0.28);
+
+  /* Type stacks — Inter is the brand font, used everywhere except mono.
+     `--font-display` is a separate token so we can swap the display face
+     later without re-touching every selector. */
+  --font-display:   "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-text:      "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono:      "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Type scale */
+  --t-mono-xs:      11px;
+  --t-mono-sm:      12.5px;
+  --t-mono-md:      14px;
+  --t-xs:           13px;
+  --t-sm:           14px;
+  --t-base:         16px;
+  --t-md:           18px;
+  --t-lg:           20px;
+  --t-xl:           24px;
+  --t-2xl:          32px;
+
+  /* Display sizes — restrained, not maximal */
+  --t-h3:           clamp(28px, 3vw, 40px);
+  --t-h2:           clamp(40px, 5.4vw, 76px);
+  --t-statement:    clamp(48px, 7vw, 96px);
+  --t-hero:         clamp(72px, 11vw, 156px);
+
+  /* Spacing — 4px base, generous large steps */
+  --s-1: 4px;   --s-2: 8px;   --s-3: 12px;  --s-4: 16px;
+  --s-5: 24px;  --s-6: 32px;  --s-7: 48px;  --s-8: 64px;
+  --s-9: 96px;  --s-10: 128px; --s-11: 176px; --s-12: 224px;
+
+  /* Layout */
+  --max:            1180px;
+  --col-text:       640px;     /* readable measure */
+  --gutter:         max(28px, calc((100vw - var(--max)) / 2));
+
+  /* Motion */
+  --ease:           cubic-bezier(0.32, 0.08, 0.24, 1);
+  --quick:          120ms;
+  --steady:         220ms;
+}
+
+/* ---- Reset ------------------------------------------------------------ */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--ink);
+  color: var(--text);
+  font-family: var(--font-text);
+  font-size: var(--t-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, h4, p { margin: 0; }
+button { font: inherit; }
+::selection { background: var(--tungsten); color: var(--ink); }
+
+/* ---- Display & body type --------------------------------------------- */
+.display {
+  font-family: var(--font-display);
+  font-weight: 700;            /* matches the brand wordmark (Inter 720) */
+  line-height: 0.96;
+  letter-spacing: -0.022em;
+}
+.display-tight {
+  letter-spacing: -0.028em;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-mono);
+  font-size: var(--t-mono-sm);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+}
+.eyebrow .num {
+  color: var(--tungsten);
+}
+
+/* ---- Header — slim, restrained --------------------------------------- */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 30;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--gutter);
+  background: rgba(5, 5, 6, 0.78);
+  backdrop-filter: saturate(1.2) blur(14px);
+  -webkit-backdrop-filter: saturate(1.2) blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.brand,
+.footer-brand {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0;
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;            /* nav scale — slightly less than wordmark 700 */
+  letter-spacing: -0.005em;
+  color: var(--text);
+}
+/* SVG mark is the "D" — sized to font cap-height, baseline-dropped via
+   transform so the visible D's bottom sits on the text baseline. */
+.brand img,
+.footer-brand img {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  transform: translateY(0.16em);
+  margin-right: -0.06em;
+  margin-left: -0.04em;
+  user-select: none;
+}
+
+.nav-links,
+.site-footer nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-family: var(--font-text);
+  font-size: var(--t-sm);
+  letter-spacing: 0;
+  color: var(--muted);
+}
+.nav-links a,
+.site-footer nav a { transition: color var(--quick) var(--ease); }
+.nav-links a:hover,
+.site-footer nav a:hover { color: var(--text); }
+
+/* ---- Buttons — single CTA shape, restrained ------------------------- */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  padding: 0 28px;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  font-family: var(--font-text);
+  font-size: var(--t-sm);
+  font-weight: 500;
+  letter-spacing: 0;
+  cursor: pointer;
+  transition:
+    background-color var(--quick) var(--ease),
+    border-color var(--quick) var(--ease),
+    color var(--quick) var(--ease),
+    transform var(--quick) var(--ease),
+    box-shadow var(--quick) var(--ease);
+}
+.button-primary {
+  background: var(--text);
+  color: var(--ink);
+  border-color: var(--text);
+}
+.button-primary:hover {
+  background: var(--parchment-fg);
+  border-color: var(--parchment-fg);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px -8px rgba(247, 241, 232, 0.25);
+}
+.button-primary:active {
+  transform: translateY(0);
+}
+.button-on-light {
+  background: var(--ink);
+  color: var(--parchment-fg);
+  border-color: var(--ink);
+}
+.button-on-light:hover {
+  background: var(--graphite-up);
+  border-color: var(--graphite-up);
+}
+.text-link {
+  font-family: var(--font-text);
+  font-size: var(--t-sm);
+  color: var(--text-soft);
+  border-bottom: 1px solid var(--line-mid);
+  padding-bottom: 2px;
+  transition: border-color var(--quick) var(--ease), color var(--quick) var(--ease);
+}
+.text-link:hover {
+  color: var(--text);
+  border-bottom-color: var(--text);
+}
+.text-link-on-light {
+  color: var(--on-light-soft);
+  border-bottom-color: var(--line-on-light-mid);
+}
+.text-link-on-light:hover {
+  color: var(--on-light-ink);
+  border-bottom-color: var(--on-light-ink);
+}
+
+/* ---- Hero ------------------------------------------------------------- */
+.hero {
+  padding: 152px var(--gutter) var(--s-11);
+  background: var(--ink);
+  border-bottom: 1px solid var(--line);
+}
+.hero-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: var(--s-9);
+  align-items: center;
+}
+.hero-text {
+  min-width: 0;
+}
+.hero-shot {
+  margin: 0;
+  min-width: 0;
+}
+.hero-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  border: 1px solid var(--line-mid);
+  /* Inset highlight on top edge — like a window pane catches the light */
+  box-shadow:
+    inset 0 1px 0 rgba(247, 241, 232, 0.045),
+    0 36px 80px -28px rgba(0, 0, 0, 0.65),
+    0 12px 32px -18px rgba(0, 0, 0, 0.4);
+}
+.hero-shot-cap {
+  display: block;
+  margin-top: var(--s-4);
+  font-family: var(--font-mono);
+  font-size: var(--t-mono-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.hero-meta {
+  font-family: var(--font-mono);
+  font-size: var(--t-mono-sm);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: var(--s-9);
+}
+.hero h1 {
+  /* Brand wordmark — Inter at the weight used in dkompos-wordmark.svg.
+     The SVG mark is the "D"; "kompos." is live type. Both must sit on
+     the same baseline, never wrap. */
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  font-family: var(--font-text);
+  font-variation-settings: normal;
+  font-size: clamp(56px, 7.4vw, 116px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--text);
+}
+.hero-line {
+  max-width: 720px;
+  margin-top: var(--s-7);
+  font-family: var(--font-text);
+  font-size: clamp(20px, 2vw, 28px);
+  font-weight: 400;
+  line-height: 1.32;
+  letter-spacing: -0.005em;
+  color: var(--text-soft);
+}
+.hero-actions {
+  margin-top: var(--s-8);
+}
+
+/* ---- Section frame — used for all standard sections ----------------- */
+.section {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: var(--s-10) var(--gutter);
+}
+.section + .section,
+.section + .section-light {
+  border-top: 1px solid var(--line);
+}
+.section-light + .section {
+  border-top: 0;
+}
+
+/* ---- Statement ------------------------------------------------------- */
+.statement h2 {
+  margin-top: var(--s-6);
+  font-family: var(--font-display);
+  font-size: var(--t-statement);
+  font-weight: 700;
+  line-height: 0.94;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  max-width: 16ch;
+}
+.statement p:not(.eyebrow) {
+  max-width: var(--col-text);
+  margin-top: var(--s-7);
+  color: var(--text-soft);
+  font-size: var(--t-md);
+  line-height: 1.62;
+}
+
+/* ---- Library — parchment-inverted editorial section ----------------- */
+/* The magazine move: one spread on cream paper, ink type. Breaks the
+   "dark theme everywhere" sameness without abandoning the brand.
+   Faint warm radial echoes the album-art sunset tones in the screenshot
+   without becoming decorative. */
+.section-light {
+  position: relative;
+  background:
+    radial-gradient(ellipse at 84% 20%, rgba(217, 154, 62, 0.10), transparent 56%),
+    var(--parchment-bg);
+  color: var(--on-light-ink);
+}
+.section-light .inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: var(--s-10) var(--gutter);
+}
+.section-light .eyebrow {
+  color: var(--on-light-soft);
+}
+.section-light .eyebrow .num {
+  color: var(--on-light-ink);
+}
+.section-light h2 {
+  margin-top: var(--s-6);
+  font-family: var(--font-display);
+  font-size: var(--t-h2);
+  font-weight: 700;
+  line-height: 0.96;
+  letter-spacing: -0.028em;
+  color: var(--on-light-ink);
+  max-width: 18ch;
+}
+.section-light p {
+  margin-top: var(--s-6);
+  color: var(--on-light-soft);
+  font-size: var(--t-md);
+  line-height: 1.65;
+  max-width: var(--col-text);
+}
+.section-light .pull {
+  position: relative;
+  margin: var(--s-9) 0 0;
+  padding: var(--s-8) 0 0 var(--s-7);
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(24px, 3vw, 38px);
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+  color: var(--on-light-ink);
+  max-width: 24ch;
+}
+/* Tungsten play-triangle mark before the pull quote — echoes the brand
+   mark's geometry and replaces the generic hairline-above quote pattern */
+.section-light .pull::before {
+  content: "";
+  position: absolute;
+  top: var(--s-8);
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 14px solid var(--tungsten);
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  margin-top: 8px;
+}
+
+/* ---- Audio — the one Signal Strip moment ---------------------------- */
+.audio h2 {
+  margin-top: var(--s-6);
+  font-family: var(--font-display);
+  font-size: var(--t-h2);
+  font-weight: 700;
+  line-height: 0.96;
+  letter-spacing: -0.028em;
+  color: var(--text);
+  max-width: 18ch;
+}
+.audio p {
+  margin-top: var(--s-6);
+  max-width: var(--col-text);
+  color: var(--text-soft);
+  font-size: var(--t-md);
+  line-height: 1.65;
+}
+.audio-strip-wrap {
+  margin-top: var(--s-9);
+  padding: var(--s-8) var(--s-7);
+  border: 1px solid var(--line-mid);
+  border-radius: 4px;
+  background:
+    linear-gradient(180deg, rgba(247, 241, 232, 0.022), transparent 60%),
+    var(--graphite-up);
+  box-shadow: inset 0 1px 0 rgba(247, 241, 232, 0.04);
+}
+.audio-strip-cap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: var(--s-6);
+  font-family: var(--font-mono);
+  font-size: var(--t-mono-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+}
+.audio-strip-cap::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--tungsten);
+  box-shadow: 0 0 8px rgba(231, 169, 83, 0.55);
+}
+
+/* Signal Strip — single signature element, one location, refined.
+   No bordered pills. No backgrounds. Just typography and dividers. */
+.signal {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  font-family: var(--font-mono);
+  font-size: clamp(13px, 1.4vw, 16px);
+  font-feature-settings: "tnum", "zero";
+  line-height: 1.4;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+.signal .stage {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  white-space: nowrap;
+  padding: 6px 0;
+}
+.signal .arrow {
+  display: inline-flex;
+  margin: 0 18px;
+  color: var(--faint);
+}
+.signal .label {
+  color: var(--faint);
+  font-size: 0.78em;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.signal .v        { color: var(--text); }
+.signal .v-on     { color: var(--tungsten-warm); }
+.signal .v-mute   { color: var(--faint); }
+.signal .sep      { color: var(--faint); margin: 0 4px; }
+
+/* ---- DJ — four words on a rule, no cards ---------------------------- */
+.dj h2 {
+  margin-top: var(--s-6);
+  font-family: var(--font-display);
+  font-size: var(--t-h2);
+  font-weight: 700;
+  line-height: 0.96;
+  letter-spacing: -0.028em;
+  color: var(--text);
+  max-width: 20ch;
+}
+.dj p {
+  margin-top: var(--s-6);
+  max-width: var(--col-text);
+  color: var(--text-soft);
+  font-size: var(--t-md);
+  line-height: 1.65;
+}
+/* DJ flow — four words on a hairline rule, distributed across one row.
+   Each step has its stage marker above the word. Words never wrap. */
+.dj-flow {
+  margin-top: var(--s-9);
+  padding: var(--s-7) 0;
+  border-top: 1px solid var(--line-mid);
+  border-bottom: 1px solid var(--line-mid);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--s-5);
+  flex-wrap: wrap;
+}
+.dj-flow .step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  min-width: 0;
+}
+.dj-flow .step .n {
+  font-family: var(--font-mono);
+  font-size: var(--t-mono-xs);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  color: var(--tungsten);
+  text-transform: uppercase;
+}
+.dj-flow .step span:not(.n) {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3vw, 44px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  white-space: nowrap;          /* never break mid-word */
+  transition: color var(--quick) var(--ease);
+}
+.dj-flow .step:hover span:not(.n) {
+  color: var(--tungsten-warm);
+}
+
+/* ---- Detail — purely editorial -------------------------------------- */
+.detail h2 {
+  margin-top: var(--s-6);
+  font-family: var(--font-display);
+  font-size: var(--t-h3);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.022em;
+  color: var(--text);
+  max-width: 24ch;
+}
+.detail p {
+  margin-top: var(--s-5);
+  max-width: var(--col-text);
+  color: var(--text-soft);
+  font-size: var(--t-md);
+  line-height: 1.65;
+}
+
+/* ---- Download — closing spread, type-led, brand-mark watermark ----- */
+.download {
+  position: relative;
+  /* Section padding handled by .section base rule (normalised to s-10).
+     Closing section gets a touch more bottom space to breathe before the
+     footer. */
+  padding-bottom: var(--s-11);
+  overflow: hidden;
+}
+/* Watermark — large brand mark in the bottom-right corner, low opacity.
+   Embedded via SVG data URI so it ships with the CSS, no extra request. */
+.download::after {
+  content: "";
+  position: absolute;
+  right: calc(var(--gutter) * -0.4);
+  bottom: -120px;
+  width: 720px;
+  height: 720px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'><path fill='%23e7a953' fill-rule='evenodd' d='M228 152h248c228 0 400 156 400 360S704 872 476 872H228Zm124 124v472h124c148 0 264-100 264-236S624 276 476 276Z'/><path fill='%23e7a953' d='M432 376v272l224-136Z'/></svg>");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.06;
+  pointer-events: none;
+}
+.download > * {
+  position: relative;
+  z-index: 1;
+}
+.download .meta {
+  font-family: var(--font-mono);
+  font-size: var(--t-mono-sm);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.download h2 {
+  margin-top: var(--s-6);
+  font-family: var(--font-display);
+  /* Closing word — statement scale; the page lands here. */
+  font-size: var(--t-statement);
+  font-weight: 700;
+  line-height: 0.94;
+  letter-spacing: -0.034em;
+  color: var(--text);
+  max-width: 14ch;
+}
+.download p {
+  margin-top: var(--s-6);
+  max-width: 56ch;
+  color: var(--text-soft);
+  font-size: var(--t-md);
+  line-height: 1.65;
+}
+.download-actions {
+  margin-top: var(--s-8);
+  display: flex;
+  align-items: center;
+  gap: var(--s-7);
+  flex-wrap: wrap;
+}
+.download .closing-spec {
+  margin-top: var(--s-8);
+  padding-top: var(--s-6);
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-7);
+  font-family: var(--font-mono);
+  font-size: var(--t-mono-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.download .closing-spec dt {
+  margin-bottom: 8px;
+  color: var(--faint);
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+}
+.download .closing-spec dd {
+  margin: 0;
+  color: var(--text);
+  font-size: var(--t-mono-sm);
+  letter-spacing: 0.06em;
+  text-transform: none;
+  font-feature-settings: "tnum";
+}
+
+/* ---- Footer ---------------------------------------------------------- */
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: var(--s-7) var(--gutter);
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: var(--t-sm);
+  flex-wrap: wrap;
+  gap: var(--s-5);
+}
+
+/* ---- Page (releases / privacy) -------------------------------------- */
+.page {
+  width: min(720px, calc(100% - 56px));
+  margin: 0 auto;
+  padding: 168px 0 var(--s-11);
+}
+.page h1 {
+  margin-top: var(--s-5);
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 700;
+  letter-spacing: -0.028em;
+  line-height: 0.96;
+  color: var(--text);
+}
+.page h2 {
+  margin-top: var(--s-9);
+  font-family: var(--font-display);
+  font-size: var(--t-xl);
+  font-weight: 600;
+  letter-spacing: -0.018em;
+  color: var(--text);
+}
+.page p {
+  margin-top: var(--s-4);
+  max-width: 64ch;
+  color: var(--text-soft);
+  font-size: var(--t-md);
+  line-height: 1.7;
+}
+.page p a {
+  color: var(--text);
+  border-bottom: 1px solid var(--line-mid);
+  padding-bottom: 1px;
+  transition: border-color var(--quick) var(--ease);
+}
+.page p a:hover { border-bottom-color: var(--text); }
+.page ul {
+  margin: var(--s-4) 0 0;
+  padding-left: var(--s-5);
+  color: var(--text-soft);
+}
+.page ul li { margin-top: 6px; line-height: 1.65; }
+
+.release-entry {
+  padding: var(--s-7) 0;
+  border-top: 1px solid var(--line);
+}
+.release-entry:first-of-type { margin-top: var(--s-8); }
+.release-entry h2 {
+  margin-top: 0;
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-4);
+  font-family: var(--font-mono);
+  font-size: var(--t-mono-md);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--tungsten-warm);
+  text-transform: uppercase;
+}
+.release-entry h2 .date {
+  color: var(--faint);
+  font-size: var(--t-mono-xs);
+  letter-spacing: 0.18em;
+}
+.release-entry h3 {
+  margin-top: var(--s-3);
+  font-family: var(--font-display);
+  font-size: var(--t-xl);
+  font-weight: 600;
+  letter-spacing: -0.018em;
+  color: var(--text);
+}
+
+/* ---- Responsive ------------------------------------------------------ */
+@media (max-width: 980px) {
+  .hero { padding-top: 132px; padding-bottom: var(--s-9); }
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: var(--s-8);
+  }
+  .section,
+  .section-light .inner {
+    padding-top: var(--s-9);
+    padding-bottom: var(--s-9);
+  }
+  .download { padding-bottom: var(--s-10); }
+  .download::after { width: 480px; height: 480px; bottom: -80px; }
+  .signal .arrow { margin: 0 12px; }
+  .dj-flow {
+    flex-wrap: wrap;
+    gap: var(--s-7) var(--s-6);
+  }
+  .dj-flow .step {
+    flex: 0 0 calc(50% - var(--s-3));
+  }
+  .site-footer {
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-header { height: 56px; padding: 0 20px; }
+  .brand span { display: none; }
+  .nav-links { gap: 16px; font-size: var(--t-xs); }
+  .hero { padding: 116px 20px var(--s-9); }
+  .hero h1 { font-size: clamp(48px, 13vw, 72px); }
+  .hero-line { font-size: 19px; }
+  .hero-actions .button { width: 100%; }
+  .section,
+  .section-light .inner {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: var(--s-8);
+    padding-bottom: var(--s-8);
+  }
+  .download { padding-bottom: var(--s-9); }
+  .download::after { width: 320px; height: 320px; bottom: -40px; opacity: 0.05; }
+  .signal {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--s-2);
+  }
+  .signal .arrow { display: none; }
+  .signal .stage { padding: 0; }
+  .dj-flow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: var(--s-5) 0;
+  }
+  .dj-flow .step {
+    flex: 1 1 100%;
+    width: 100%;
+    padding: var(--s-5) 0;
+    border-top: 1px solid var(--line);
+  }
+  .dj-flow .step:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+  .download-actions { flex-direction: column; align-items: flex-start; gap: var(--s-5); }
+  .download-actions .button { width: 100%; }
+  .download .closing-spec { gap: var(--s-5); }
+  .page { padding-top: 116px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 1ms !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .site-header {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: var(--ink);
+  }
+}
+
+/* =========================================================================
+   Polish — small details that compound. Added in the 10/10 pass.
+   ======================================================================== */
+
+/* Tape leader — a thin tungsten hairline at the very top edge.
+   Like the leader on reel-to-reel tape; says the page is finished. */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+    var(--tungsten-warm),
+    var(--tungsten) 40%,
+    var(--tungsten-warm) 80%,
+    var(--tungsten-warm));
+  z-index: 60;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+/* Anchor offset — jumps land below the fixed header, not under it */
+section[id] {
+  scroll-margin-top: 96px;
+}
+
+/* Tungsten period on Dkompos. — echoes the brand mark's amber accent */
+.hero h1 .stop {
+  color: var(--tungsten-warm);
+}
+
+/* Hero brand mark — replaces the "D" in "Dkompos" with the actual logo SVG.
+   Sized to match the cap-height of the surrounding letters; positioned to
+   sit on the text baseline. The SVG has ~15% internal padding so we use
+   a slight translateY to drop its visible D onto the baseline. */
+.hero-mark {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  align-self: baseline;
+  /* Pull the mark down so its visible D bottom aligns with the
+     "kompos" baseline, and tight against the next letter. */
+  transform: translateY(0.16em);
+  margin-right: -0.06em;
+  margin-left: -0.04em;
+  user-select: none;
+}
+
+/* Hero Signal Strip — small, ambient, lives between tagline and CTA */
+.hero-signal {
+  display: inline-flex;
+  align-items: center;
+  margin-top: var(--s-6);
+  padding: 10px 16px;
+  border: 1px solid var(--line-mid);
+  border-radius: 4px;
+  background: rgba(247, 241, 232, 0.014);
+  font-family: var(--font-mono);
+  font-size: var(--t-mono-sm);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  font-feature-settings: "tnum", "zero";
+  line-height: 1;
+  white-space: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+  max-width: 100%;
+}
+.hero-signal::-webkit-scrollbar { display: none; }
+.hero-signal .live {
+  display: inline-block;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--tungsten);
+  margin-right: 12px;
+  box-shadow: 0 0 10px rgba(231, 169, 83, 0.7);
+  animation: pulse-live 2400ms ease-in-out infinite;
+}
+@keyframes pulse-live {
+  0%, 100% { opacity: 1; box-shadow: 0 0 10px rgba(231, 169, 83, 0.7); }
+  50%      { opacity: 0.6; box-shadow: 0 0 4px rgba(231, 169, 83, 0.3); }
+}
+.hero-signal .label  { color: var(--faint); }
+.hero-signal .v      { color: var(--text); margin: 0 8px; }
+.hero-signal .v-on   { color: var(--tungsten-warm); margin: 0 8px; }
+.hero-signal .sep    { color: var(--hush, var(--faint)); opacity: 0.7; }
+
+/* Editorial chapter mark — small tungsten hairline above each section
+   eyebrow / meta. Magazine convention; it tells you the section is real. */
+.section > .eyebrow,
+.section-light .inner > .eyebrow,
+.download > .meta {
+  position: relative;
+  padding-top: var(--s-7);
+}
+.section > .eyebrow::before,
+.section-light .inner > .eyebrow::before,
+.download > .meta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 56px;
+  height: 1px;
+  background: var(--tungsten);
+  opacity: 0.85;
+}
+.section-light .inner > .eyebrow::before {
+  background: var(--on-light-ink);
+  opacity: 0.4;
+}
+
+/* Hover lift on the hero screenshot — subtle, premium */
+.hero-shot {
+  transition:
+    transform var(--steady) var(--ease);
+}
+.hero-shot img {
+  transition:
+    box-shadow var(--steady) var(--ease);
+}
+.hero-shot:hover {
+  transform: translateY(-3px);
+}
+.hero-shot:hover img {
+  box-shadow:
+    0 50px 100px -28px rgba(0, 0, 0, 0.78),
+    0 18px 44px -22px rgba(0, 0, 0, 0.55);
+}
+
+/* Body emphasis — one tungsten word per paragraph, in `<em>` */
+em {
+  font-style: normal;
+  color: var(--tungsten-warm);
+  font-weight: 500;
+}
+.section-light em {
+  color: var(--on-light-ink);
+  font-weight: 600;
+}
+
+/* DJ word-flow — quiet hover that brightens the word itself */
+.dj-flow .step {
+  transition: color var(--quick) var(--ease);
+  cursor: default;
+}
+.dj-flow .step span:not(.n) {
+  transition: color var(--quick) var(--ease);
+}
+.dj-flow .step:hover span:not(.n) {
+  color: var(--tungsten-warm);
+}
+
+/* Footer colophon — mono build-line under the brand row */
+.site-footer {
+  align-items: flex-start;
+  padding-top: var(--s-7);
+  padding-bottom: var(--s-7);
+}
+.colophon {
+  margin-top: var(--s-3);
+  font-family: var(--font-mono);
+  font-size: var(--t-mono-xs);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--faint);
+  line-height: 1.5;
+}
+
+/* Cinematic entrance — sequenced fade-up of hero elements on first paint */
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-meta,
+.hero h1,
+.hero-line,
+.hero-signal,
+.hero-actions,
+.hero-shot {
+  animation: hero-rise 720ms var(--ease) both;
+}
+.hero-meta    { animation-delay:  60ms; }
+.hero h1      { animation-delay: 140ms; }
+.hero-line    { animation-delay: 240ms; }
+.hero-signal  { animation-delay: 320ms; }
+.hero-actions { animation-delay: 400ms; }
+.hero-shot    { animation-delay: 520ms; animation-duration: 880ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-meta,
+  .hero h1,
+  .hero-line,
+  .hero-signal,
+  .hero-actions,
+  .hero-shot {
+    animation: none;
+  }
+  .hero-signal .live {
+    animation: none;
+  }
+}

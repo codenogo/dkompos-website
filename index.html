@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dkompos — bit-perfect audio chain, DJ workspace, and music library for macOS</title>
+    <meta
+      name="description"
+      content="Dkompos is a bit-perfect, hi-res-aware music player for macOS — built for audiophiles first, with a DJ-grade crate and set workflow and a library that respects a serious collection."
+    />
+    <meta name="theme-color" content="#050506" />
+    <meta property="og:title" content="Dkompos" />
+    <meta property="og:description" content="Your signal path. Your next set. Your library." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.dkompos.com/" />
+    <meta property="og:image" content="https://www.dkompos.com/assets/screens/app-home.png" />
+    <link rel="icon" href="assets/favicon.png" />
+
+    <!-- Privacy-friendly font hosting -->
+    <link rel="preconnect" href="https://fonts.bunny.net" crossorigin />
+    <link
+      href="https://fonts.bunny.net/css?family=inter:400,500,600,700|jetbrains-mono:400,500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header" aria-label="Primary">
+      <a class="brand" href="/" aria-label="Dkompos home">
+        <img src="assets/brand/dkompos-mark-primary.svg" alt="D" />
+        <span>kompos</span>
+      </a>
+      <nav class="nav-links" aria-label="Site">
+        <a href="#audio">Audio</a>
+        <a href="#dj">DJ</a>
+        <a href="releases.html">Releases</a>
+        <a href="#download">Download</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- ========================================================
+           Hero — split: type left, contained screenshot right
+           ======================================================== -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-inner">
+          <div class="hero-text">
+            <p class="hero-meta">v1.3.0 &nbsp;·&nbsp; macOS</p>
+            <h1 id="hero-title" class="display">
+              <img class="hero-mark" src="assets/brand/dkompos-mark-primary.svg" alt="D" />kompos<span class="stop">.</span>
+            </h1>
+            <p class="hero-line">
+              Your signal path. Your next set. Your library.
+            </p>
+            <div
+              class="hero-signal"
+              role="img"
+              aria-label="Now listening: FLAC 24/96, bit-perfect at 96 kHz"
+            >
+              <span class="live" aria-hidden="true"></span>
+              <span class="label">Listening</span>
+              <span class="v">FLAC</span>
+              <span class="sep">·</span>
+              <span class="v-on">24 / 96</span>
+              <span class="sep">·</span>
+              <span class="v-on">bit-perfect</span>
+            </div>
+            <div class="hero-actions">
+              <a
+                class="button button-primary"
+                href="mailto:hello@dkompos.com?subject=Dkompos%20early%20access"
+              >Request early access</a>
+            </div>
+          </div>
+
+          <figure class="hero-shot">
+            <img
+              src="assets/screens/app-home.png"
+              alt="Dkompos home view: sidebar with library and DJ navigation, hero pick, mood tiles, album of the week, recently added grid, and a full now-playing rail showing Mac Miller's Tambourine Dream with hi-res FLAC 24/44.1 signal path readout."
+            />
+            <figcaption class="hero-shot-cap">
+              Home view &nbsp;·&nbsp; Mac Miller — Tambourine Dream
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           Statement — audiophile-first positioning
+           ======================================================== -->
+      <section class="section statement" aria-labelledby="statement-title">
+        <p class="eyebrow">On listening</p>
+        <h2 id="statement-title" class="display-tight">
+          What you press play on is what you hear.
+        </h2>
+        <p>
+          Dkompos is built for <em>audiophiles</em> first — bit-perfect from
+          source to DAC, hi-res aware, with the signal path visible at every
+          stage. DJs get a full crate-and-set workflow inside the same
+          library. Serious listeners get a player that holds a collection the
+          way a turntable holds a record.
+        </p>
+      </section>
+
+      <!-- ========================================================
+           Audio — first content section. Audiophile credentials
+           come before anything else.
+           ======================================================== -->
+      <section id="audio" class="section audio" aria-labelledby="audio-title">
+        <p class="eyebrow"><span class="num">01</span> &nbsp;Audio</p>
+        <h2 id="audio-title">The sound path should not be a mystery.</h2>
+        <p>
+          Bit-perfect from source to DAC when DSP is bypassed. Direct,
+          parametric EQ, crossfeed for headphones, upsampling when the chain
+          calls for it, ReplayGain when it doesn’t. The right-rail readout
+          shows what is <em>actually</em> engaged — and what is being
+          bypassed — before a single sample reaches the converter.
+        </p>
+
+        <div class="audio-strip-wrap">
+          <span class="audio-strip-cap">Bit-perfect when DSP is bypassed</span>
+          <div
+            class="signal"
+            role="img"
+            aria-label="Signal path readout: FLAC 24-bit 96 kHz, DSP bypassed, output bit-perfect at 96 kHz"
+          >
+            <span class="stage">
+              <span class="label">Source</span>
+              <span class="v">FLAC</span>
+              <span class="sep">·</span>
+              <span class="v-on">24 / 96</span>
+            </span>
+            <span class="arrow" aria-hidden="true">/</span>
+            <span class="stage">
+              <span class="label">DSP</span>
+              <span class="v-mute">bypassed</span>
+            </span>
+            <span class="arrow" aria-hidden="true">/</span>
+            <span class="stage">
+              <span class="label">Output</span>
+              <span class="v">USB DAC</span>
+              <span class="sep">·</span>
+              <span class="v-on">bit-perfect</span>
+              <span class="sep">·</span>
+              <span class="v-on">96.0 kHz</span>
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           DJ — second content section. Workflow built into the
+           same library, not bolted on.
+           ======================================================== -->
+      <section id="dj" class="section dj" aria-labelledby="dj-title">
+        <p class="eyebrow"><span class="num">02</span> &nbsp;DJ</p>
+        <h2 id="dj-title">A workflow, not a feature list.</h2>
+        <p>
+          The same library that holds your hi-res collection is where you
+          triage what’s new, stash maybes, and build sets <em>in order</em>
+          with key, tempo, and energy alongside the names. Export to the
+          booth in the format the booth expects.
+        </p>
+
+        <div class="dj-flow" aria-label="DJ workflow stages">
+          <span class="step">
+            <span class="n">Stage 01</span>
+            <span>Discover.</span>
+          </span>
+          <span class="step">
+            <span class="n">Stage 02</span>
+            <span>Curate.</span>
+          </span>
+          <span class="step">
+            <span class="n">Stage 03</span>
+            <span>Compose.</span>
+          </span>
+          <span class="step">
+            <span class="n">Stage 04</span>
+            <span>Export.</span>
+          </span>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           Library — closing editorial spread on parchment.
+           Where a serious collection lives.
+           ======================================================== -->
+      <section id="library" class="section-light" aria-labelledby="library-title">
+        <div class="inner">
+          <p class="eyebrow"><span class="num">03</span> &nbsp;Library</p>
+          <h2 id="library-title">Built to hold a serious collection.</h2>
+          <p>
+            Albums, edits, hi-res files, loose downloads, the tracks you
+            forgot were brilliant. Search runs against the whole catalogue in
+            milliseconds. Quality stays <em>honest</em> — hi-res files keep
+            their badges; lossy ones are labelled the same way.
+          </p>
+          <p class="pull">
+            The list works for the library, not the other way round.
+          </p>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           Download — closing spread. Statement-scale headline,
+           brand-mark watermark in the corner, spec strip at the foot.
+           ======================================================== -->
+      <section id="download" class="section download" aria-labelledby="download-title">
+        <p class="meta">macOS</p>
+        <h2 id="download-title">Get Dkompos.</h2>
+        <p>
+          Version 1.3.0 is preparing for public distribution. Join early
+          access while the release pipeline finalises.
+        </p>
+        <div class="download-actions">
+          <a
+            class="button button-primary"
+            href="mailto:hello@dkompos.com?subject=Dkompos%20early%20access"
+          >Request early access</a>
+          <a class="text-link" href="releases.html">Read the release notes</a>
+        </div>
+
+        <dl class="closing-spec" aria-label="System requirements">
+          <div>
+            <dt>Version</dt>
+            <dd>1.3.0</dd>
+          </div>
+          <div>
+            <dt>Platform</dt>
+            <dd>macOS &nbsp;·&nbsp; Apple Silicon</dd>
+          </div>
+          <div>
+            <dt>Distribution</dt>
+            <dd>Signed &nbsp;·&nbsp; Notarised</dd>
+          </div>
+        </dl>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <a class="footer-brand" href="/">
+          <img src="assets/brand/dkompos-mark-primary.svg" alt="D" />
+          <span>kompos</span>
+        </a>
+        <p class="colophon">
+          v1.3.0 &nbsp;·&nbsp; Apple Silicon &nbsp;·&nbsp; © 2026
+        </p>
+      </div>
+      <nav aria-label="Footer">
+        <a href="privacy.html">Privacy</a>
+        <a href="releases.html">Releases</a>
+        <a href="mailto:hello@dkompos.com">Contact</a>
+      </nav>
+    </footer>
+  </body>
+</html>
