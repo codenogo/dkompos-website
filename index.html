@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dkompos — bit-perfect audio chain, DJ workspace, and music library for macOS</title>
+    <title>Dkompos — audiophile music player, DJ workspace, and library for macOS</title>
     <meta
       name="description"
-      content="Dkompos is a bit-perfect, hi-res-aware music player for macOS — built for audiophiles first, with a DJ-grade crate and set workflow and a library that respects a serious collection."
+      content="Dkompos is a hi-res-aware music player for macOS — built for audiophiles first, with a direct signal path you can see, DJ-grade crate and set workflow, and a library that respects a serious collection."
     />
     <meta name="theme-color" content="#050506" />
     <meta property="og:title" content="Dkompos" />
@@ -56,7 +56,7 @@
             <div
               class="hero-signal"
               role="img"
-              aria-label="Now listening: FLAC 24/96, bit-perfect at 96 kHz"
+              aria-label="Now listening: FLAC 24/96, direct output at 96 kHz, DSP bypassed"
             >
               <span class="live" aria-hidden="true"></span>
               <span class="label">Listening</span>
@@ -64,7 +64,7 @@
               <span class="sep">·</span>
               <span class="v-on">24 / 96</span>
               <span class="sep">·</span>
-              <span class="v-on">bit-perfect</span>
+              <span class="v-on">DSP bypass</span>
             </div>
             <div class="hero-actions">
               <a
@@ -95,11 +95,12 @@
           What you press play on is what you hear.
         </h2>
         <p>
-          Dkompos is built for <em>audiophiles</em> first — bit-perfect from
-          source to DAC, hi-res aware, with the signal path visible at every
-          stage. DJs get a full crate-and-set workflow inside the same
-          library. Serious listeners get a player that holds a collection the
-          way a turntable holds a record.
+          Dkompos is built for <em>audiophiles</em> first — a direct signal
+          path with DSP bypass, hi-res aware, exclusive output, and every
+          stage of the chain visible at all times. DJs get a full
+          crate-and-set workflow inside the same library. Serious listeners
+          get a player that holds a collection the way a turntable holds a
+          record.
         </p>
       </section>
 
@@ -111,19 +112,20 @@
         <p class="eyebrow"><span class="num">01</span> &nbsp;Audio</p>
         <h2 id="audio-title">The sound path should not be a mystery.</h2>
         <p>
-          Bit-perfect from source to DAC when DSP is bypassed. Direct,
-          parametric EQ, crossfeed for headphones, upsampling when the chain
+          Exclusive output. DSP bypass when you want the source untouched —
+          same sample rate, same bit depth, no resampling, no dithering.
+          Parametric EQ, crossfeed for headphones, upsampling when the chain
           calls for it, ReplayGain when it doesn’t. The right-rail readout
           shows what is <em>actually</em> engaged — and what is being
           bypassed — before a single sample reaches the converter.
         </p>
 
         <div class="audio-strip-wrap">
-          <span class="audio-strip-cap">Bit-perfect when DSP is bypassed</span>
+          <span class="audio-strip-cap">Direct output when DSP is bypassed</span>
           <div
             class="signal"
             role="img"
-            aria-label="Signal path readout: FLAC 24-bit 96 kHz, DSP bypassed, output bit-perfect at 96 kHz"
+            aria-label="Signal path readout: FLAC 24-bit 96 kHz, DSP bypassed, direct output at 96 kHz"
           >
             <span class="stage">
               <span class="label">Source</span>
@@ -141,7 +143,7 @@
               <span class="label">Output</span>
               <span class="v">USB DAC</span>
               <span class="sep">·</span>
-              <span class="v-on">bit-perfect</span>
+              <span class="v-on">exclusive</span>
               <span class="sep">·</span>
               <span class="v-on">96.0 kHz</span>
             </span>
