@@ -32,6 +32,14 @@ Inter + JetBrains Mono via [Bunny Fonts](https://fonts.bunny.net) (privacy-frien
 
 The site is intended to deploy as a static directory to any host (Cloudflare Pages, GitHub Pages, Netlify, Vercel, S3+CloudFront). The publish directory is the repo root.
 
-## Distribution Note
+## Distribution
 
-Replace the early-access `mailto:` in `index.html` with the notarised DMG URL once the Developer ID signing pipeline is live.
+The public download CTA points at the notarised GitHub Release asset:
+
+```text
+https://github.com/codenogo/dkompos-website/releases/download/v1.5.1/Dkompos_1.5.1_aarch64.dmg
+```
+
+Do not commit DMG files into this website repo. Keep heavy binaries in GitHub
+Releases or object storage, then update `index.html` and `releases.html` with
+the new version, URL, size, and SHA-256.
