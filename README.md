@@ -37,7 +37,7 @@ The site is intended to deploy as a static directory to any host (Cloudflare Pag
 The public download CTA points at the notarised GitHub Release asset:
 
 ```text
-https://github.com/codenogo/dkompos-website/releases/download/v1.5.1/Dkompos_1.5.1_aarch64.dmg
+https://github.com/codenogo/dkompos-website/releases/download/v1.5.3/Dkompos_1.5.3_aarch64.dmg
 ```
 
 Do not commit DMG files into this website repo. Keep heavy binaries in GitHub
