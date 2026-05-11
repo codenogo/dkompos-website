@@ -1299,3 +1299,48 @@ em {
     animation: none;
   }
 }
+
+/* =========================================================
+   FAQ — disclosure list inside a magazine section.
+   Restrained: rule above each row, monospace marker, no chevrons.
+   ========================================================= */
+.faq .faq-item {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 1.1rem 0;
+}
+.faq .faq-item:last-of-type {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.faq .faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  font-family: var(--font-display, inherit);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: -0.005em;
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  color: inherit;
+}
+.faq .faq-item summary::-webkit-details-marker {
+  display: none;
+}
+.faq .faq-item summary::before {
+  content: "+";
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-weight: 500;
+  opacity: 0.55;
+  width: 0.9em;
+  display: inline-block;
+}
+.faq .faq-item[open] summary::before {
+  content: "−";
+  opacity: 0.85;
+}
+.faq .faq-item p {
+  margin: 0.6rem 0 0 1.65rem;
+  opacity: 0.78;
+  max-width: 60ch;
+  line-height: 1.55;
+}

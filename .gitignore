@@ -17,6 +17,9 @@ npm-debug.log*
 # Dependency dirs (in case tooling is added later)
 node_modules/
 
+# Local Cloudflare tooling cache
+.wrangler/
+
 # Environment / secrets
 .env
 .env.local

@@ -8,13 +8,24 @@
       name="description"
       content="Download Dkompos for macOS — a hi-res-aware local music player with visible signal path, DJ crates, smart library automation, audiobooks, and mixes."
     />
+    <link rel="canonical" href="https://www.dkompos.com/" />
     <meta name="theme-color" content="#050506" />
-    <meta property="og:title" content="Dkompos" />
-    <meta property="og:description" content="Your signal path. Your next set. Your library." />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta property="og:site_name" content="Dkompos" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="Dkompos — audiophile music player, DJ workspace, and library for macOS" />
+    <meta property="og:description" content="Your signal path. Your next set. Your library. A hi-res-aware local music player for macOS with visible signal path, DJ crates, audiobooks, and smart library automation." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.dkompos.com/" />
     <meta property="og:image" content="https://www.dkompos.com/assets/screens/app-home.png" />
+    <meta property="og:image:alt" content="Dkompos home view — library, mood tiles, and now-playing rail with hi-res signal path readout." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Dkompos — audiophile music player, DJ workspace, and library for macOS" />
+    <meta name="twitter:description" content="Your signal path. Your next set. Your library. A hi-res-aware local music player for macOS." />
+    <meta name="twitter:image" content="https://www.dkompos.com/assets/screens/app-home.png" />
     <link rel="icon" href="assets/favicon.png" />
+    <link rel="apple-touch-icon" href="assets/favicon.png" />
+    <link rel="preload" as="image" href="assets/screens/app-home.png" fetchpriority="high" />
 
     <!-- Privacy-friendly font hosting -->
     <link rel="preconnect" href="https://fonts.bunny.net" crossorigin />
@@ -24,6 +35,129 @@
     />
 
     <link rel="stylesheet" href="styles.css" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.dkompos.com/#organization",
+          "name": "Dkompos",
+          "url": "https://www.dkompos.com/",
+          "logo": "https://www.dkompos.com/assets/brand/dkompos-mark-primary.svg",
+          "email": "hello@dkompos.com"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.dkompos.com/#website",
+          "url": "https://www.dkompos.com/",
+          "name": "Dkompos",
+          "publisher": { "@id": "https://www.dkompos.com/#organization" },
+          "inLanguage": "en"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://www.dkompos.com/#app",
+          "name": "Dkompos",
+          "applicationCategory": "MultimediaApplication",
+          "applicationSubCategory": "MusicApplication",
+          "operatingSystem": "macOS 11+",
+          "processorRequirements": "Apple Silicon (arm64)",
+          "softwareVersion": "1.5.3",
+          "fileSize": "422 MB",
+          "downloadUrl": "https://github.com/codenogo/dkompos-website/releases/download/v1.5.3/Dkompos_1.5.3_aarch64.dmg",
+          "installUrl": "https://www.dkompos.com/#download",
+          "url": "https://www.dkompos.com/",
+          "publisher": { "@id": "https://www.dkompos.com/#organization" },
+          "description": "Audiophile-first macOS music player with visible signal path, DSP bypass, hi-res FLAC support, DJ crates and set composition, audiobooks, mixes, and on-device library intelligence.",
+          "screenshot": "https://www.dkompos.com/assets/screens/app-home.png",
+          "featureList": [
+            "Exclusive output and DSP bypass",
+            "Hi-res FLAC and bit-perfect playback",
+            "Parametric EQ, crossfeed, upsampling, ReplayGain",
+            "On-device track analysis: BPM, Camelot key, LUFS, energy, valence",
+            "Harmonic mixing and DJ set composition",
+            "Crates, triage, and booth-ready export",
+            "Audiobooks with chapter resume and natural ordering",
+            "Smart playlists and mood sessions",
+            "Local-first — no accounts, no uploads"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is Dkompos free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Dkompos is distributed as a free, signed and notarised macOS download. There is no account and no paid tier."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which Macs does Dkompos run on?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Apple Silicon (M1 and later) on macOS 11 or newer. The current build is an arm64 DMG."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Dkompos upload my library or require an account?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Dkompos is local-first by design. There are no accounts, no uploads, and no analytics — the on-device music model runs entirely on your Mac."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Dkompos support hi-res FLAC and bit-perfect playback?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Exclusive output, DSP bypass, and hi-res FLAC up to 24/192 are supported. The signal-path readout shows the source format, DSP state, and output sample rate in real time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use Dkompos for DJing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The same library that holds your collection includes crates, harmonic-mixing metadata (BPM and Camelot key), energy and valence analysis, set composition, and export workflows that land files in the format the booth expects."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Dkompos handle audiobooks?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Long-form titles sit alongside music with per-title resume, chapter navigation, and natural file ordering."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the Dkompos DMG signed and notarised?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every public build is signed with an Apple Developer ID, notarised by Apple, and stapled. SHA-256 checksums for each release are published on the Releases page."
+          }
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <header class="site-header" aria-label="Primary">
@@ -78,6 +212,10 @@
           <figure class="hero-shot">
             <img
               src="assets/screens/app-home.png"
+              width="1586"
+              height="992"
+              fetchpriority="high"
+              decoding="async"
               alt="Dkompos home view: sidebar with library and DJ navigation, hero pick, mood tiles, album of the week, recently added grid, and a full now-playing rail showing Mac Miller's Tambourine Dream with hi-res FLAC 24/44.1 signal path readout."
             />
             <figcaption class="hero-shot-cap">
@@ -260,6 +398,43 @@
             The list works for the library, not the other way round.
           </p>
         </div>
+      </section>
+
+      <!-- ========================================================
+           FAQ — common questions, mirrored as FAQPage JSON-LD.
+           ======================================================== -->
+      <section id="faq" class="section faq" aria-labelledby="faq-title">
+        <p class="eyebrow"><span class="num">06</span> &nbsp;FAQ</p>
+        <h2 id="faq-title">Questions, briefly answered.</h2>
+
+        <details class="faq-item">
+          <summary>Is Dkompos free?</summary>
+          <p>Yes. Dkompos is distributed as a free, signed and notarised macOS download. There is no account and no paid tier.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Which Macs does Dkompos run on?</summary>
+          <p>Apple Silicon (M1 and later) on macOS 11 or newer. The current build is an arm64 DMG.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does Dkompos upload my library or require an account?</summary>
+          <p>No. Dkompos is local-first by design. There are no accounts, no uploads, and no analytics — the on-device music model runs entirely on your Mac.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does it support hi-res FLAC and bit-perfect playback?</summary>
+          <p>Yes. Exclusive output, DSP bypass, and hi-res FLAC up to 24/192 are supported. The signal-path readout shows the source format, DSP state, and output sample rate in real time.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I use Dkompos for DJing?</summary>
+          <p>The same library that holds your collection includes crates, harmonic-mixing metadata (BPM and Camelot key), energy and valence analysis, set composition, and export workflows that land files in the format the booth expects.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does Dkompos handle audiobooks?</summary>
+          <p>Yes. Long-form titles sit alongside music with per-title resume, chapter navigation, and natural file ordering, so chapter 2 follows chapter 1 instead of chapter 10.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is the DMG signed and notarised?</summary>
+          <p>Every public build is signed with an Apple Developer ID, notarised by Apple, and stapled. SHA-256 checksums for each release are published on the Releases page.</p>
+        </details>
       </section>
 
       <!-- ========================================================
