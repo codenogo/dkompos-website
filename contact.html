@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Feedback — Dkompos</title>
+    <meta
+      name="description"
+      content="Send feedback, bug reports, audio-device notes, and feature requests to the Dkompos team."
+    />
+    <link rel="canonical" href="https://www.dkompos.com/contact.html" />
+    <meta name="theme-color" content="#050506" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:site_name" content="Dkompos" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="Feedback — Dkompos" />
+    <meta
+      property="og:description"
+      content="Report a bug, describe a listening setup, or send a note about what Dkompos should become."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.dkompos.com/contact.html" />
+    <meta property="og:image" content="https://www.dkompos.com/assets/screens/app-home.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Feedback — Dkompos" />
+    <meta
+      name="twitter:description"
+      content="Report a bug, describe a listening setup, or send a note about what Dkompos should become."
+    />
+    <meta name="twitter:image" content="https://www.dkompos.com/assets/screens/app-home.png" />
+    <link rel="icon" href="assets/favicon.png" />
+    <link rel="apple-touch-icon" href="assets/favicon.png" />
+
+    <link rel="preconnect" href="https://fonts.bunny.net" crossorigin />
+    <link
+      href="https://fonts.bunny.net/css?family=inter:400,500,600,700|jetbrains-mono:400,500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+    <script src="assets/contact.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header" aria-label="Primary">
+      <a class="brand" href="index.html" aria-label="Dkompos home">
+        <img src="assets/brand/dkompos-mark-primary.svg" alt="D" />
+        <span>kompos</span>
+      </a>
+      <nav class="nav-links" aria-label="Site">
+        <a href="index.html#audio">Audio</a>
+        <a href="releases.html">Releases</a>
+        <a href="contact.html" aria-current="page">Feedback</a>
+        <a href="index.html#download">Download</a>
+      </nav>
+    </header>
+
+    <main class="page contact-page">
+      <p class="eyebrow">Feedback</p>
+      <h1>Tell Dkompos what happened.</h1>
+      <p>
+        Bug reports, strange library cases, DAC behaviour, DJ workflow notes,
+        and plain product instincts are all useful. The best notes include what
+        you expected, what happened, and the version of Dkompos you were using.
+      </p>
+
+      <section class="feedback-panel" aria-labelledby="feedback-form-title">
+        <div>
+          <h2 id="feedback-form-title">Send a note</h2>
+          <p>
+            This form sends your message to the Dkompos inbox. Your email is
+            optional, but include it if you want a reply.
+          </p>
+        </div>
+
+        <form class="feedback-form" action="/api/feedback" method="post" data-feedback-form>
+          <input type="hidden" name="source" value="contact-page" />
+          <label class="field">
+            <span>Kind of note</span>
+            <select name="topic" required>
+              <option value="bug">Bug report</option>
+              <option value="audio">Audio output or signal path</option>
+              <option value="library">Library, metadata, or scanning</option>
+              <option value="dj">DJ workflow</option>
+              <option value="audiobook">Audiobooks or long-form listening</option>
+              <option value="feature">Feature request</option>
+              <option value="general">General feedback</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Email for reply <small>optional</small></span>
+            <input
+              type="email"
+              name="email"
+              maxlength="160"
+              autocomplete="email"
+              placeholder="you@example.com"
+            />
+          </label>
+
+          <label class="field">
+            <span>Setup context <small>optional</small></span>
+            <input
+              type="text"
+              name="context"
+              maxlength="500"
+              placeholder="Dkompos 1.5.4, macOS 14, USB DAC, FLAC library..."
+            />
+          </label>
+
+          <label class="field">
+            <span>Message</span>
+            <textarea
+              name="message"
+              minlength="10"
+              maxlength="4000"
+              rows="9"
+              required
+              placeholder="What did you expect? What happened? What would make Dkompos better?"
+            ></textarea>
+          </label>
+
+          <label class="screen-reader-trap" aria-hidden="true" hidden>
+            Company
+            <input type="text" name="company" tabindex="-1" autocomplete="off" />
+          </label>
+
+          <div class="feedback-actions">
+            <button class="button button-primary" type="submit">Send feedback</button>
+            <a class="text-link" href="mailto:hello@dkompos.com?subject=Dkompos%20feedback">
+              Email directly
+            </a>
+          </div>
+
+          <p class="form-status" role="status" aria-live="polite" data-feedback-status></p>
+          <noscript>
+            <p class="form-status">
+              JavaScript is not required, but if this form does not complete in
+              your browser, email
+              <a href="mailto:hello@dkompos.com?subject=Dkompos%20feedback">hello@dkompos.com</a>.
+            </p>
+          </noscript>
+        </form>
+      </section>
+
+      <section class="feedback-guidance" aria-labelledby="feedback-guidance-title">
+        <h2 id="feedback-guidance-title">What helps most</h2>
+        <ul>
+          <li>For audio issues, include output device, sample rate, and whether DSP was bypassed.</li>
+          <li>For library issues, include file type, folder shape, and what looked wrong.</li>
+          <li>For DJ workflow notes, include the set-prep step that slowed you down.</li>
+          <li>For privacy or support questions, email directly if you prefer a normal mail thread.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <a class="footer-brand" href="index.html">
+          <img src="assets/brand/dkompos-mark-primary.svg" alt="D" />
+          <span>kompos</span>
+        </a>
+        <p class="colophon">
+          v1.5.4 &nbsp;·&nbsp; Apple Silicon &nbsp;·&nbsp; © 2026
+        </p>
+      </div>
+      <nav aria-label="Footer">
+        <a href="privacy.html">Privacy</a>
+        <a href="releases.html">Releases</a>
+        <a href="contact.html">Feedback</a>
+        <a href="mailto:hello@dkompos.com">Email</a>
+      </nav>
+    </footer>
+  </body>
+</html>

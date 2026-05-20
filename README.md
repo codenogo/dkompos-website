@@ -2,7 +2,7 @@
 
 **Audiophile-first music player, DJ workspace, and library for macOS.**
 
-**[Download for macOS →](https://www.dkompos.com/)** &nbsp;·&nbsp; [Release notes](https://www.dkompos.com/releases.html) &nbsp;·&nbsp; [Privacy](https://www.dkompos.com/privacy.html)
+**[Download for macOS →](https://www.dkompos.com/)** &nbsp;·&nbsp; [Release notes](https://www.dkompos.com/releases.html) &nbsp;·&nbsp; [Feedback](https://www.dkompos.com/contact.html) &nbsp;·&nbsp; [Privacy](https://www.dkompos.com/privacy.html)
 
 Dkompos is a free, signed, notarised macOS application for people who care about how music sounds and how a library is held. It runs locally — no accounts, no uploads, no telemetry.
 
@@ -32,7 +32,8 @@ The latest DMG, SHA-256 checksum, and full release notes are at **[dkompos.com/r
 
 This repo hosts the **dkompos.com marketing site** and the public **Release DMGs** for the Dkompos macOS app.
 
-The site itself is pure HTML / CSS / SVG / PNG. No JS, no build step.
+The site itself is mostly static HTML / CSS / SVG / PNG. The feedback form is handled by a
+Cloudflare Pages Function in `functions/api/feedback.js`.
 
 ### Local preview
 
@@ -42,6 +43,14 @@ python3 -m http.server 8080
 
 Then open <http://127.0.0.1:8080>.
 
+To test the feedback endpoint locally, use Cloudflare Pages dev instead:
+
+```bash
+npx wrangler pages dev . --port 8788
+```
+
+Then open <http://127.0.0.1:8788/contact>.
+
 ### Layout
 
 | Path | Purpose |
@@ -49,7 +58,11 @@ Then open <http://127.0.0.1:8080>.
 | `index.html` | Home |
 | `releases.html` | Release notes for every published build |
 | `privacy.html` | Privacy stance |
+| `contact.html` | Feedback and support contact |
 | `styles.css` | All styling, single token system |
+| `assets/contact.js` | Progressive enhancement for the feedback form |
+| `functions/api/feedback.js` | Server-side feedback endpoint for Cloudflare Pages |
+| `wrangler.toml` | Cloudflare Pages project and compatibility configuration |
 | `robots.txt` / `sitemap.xml` | Search-engine plumbing |
 | `assets/brand/` | Brand mark and wordmark SVGs |
 | `assets/screens/` | Product screenshots |
@@ -61,6 +74,37 @@ Inter + JetBrains Mono via [Bunny Fonts](https://fonts.bunny.net) — a privacy-
 ### Deploy
 
 Deploys as a static directory to any host (Cloudflare Pages, GitHub Pages, Netlify, Vercel, S3+CloudFront). The publish directory is the repo root.
+
+Cloudflare Pages is preferred because the feedback endpoint uses Pages Functions.
+
+### Feedback delivery
+
+The public form posts to `/api/feedback`. It validates input, rejects obvious spam
+with a honeypot field, and then delivers the note using the first configured
+runtime binding:
+
+| Variable | Purpose |
+|---|---|
+| `RESEND_API_KEY` | Preferred production option for Cloudflare Pages; sends feedback as email through Resend |
+| `FEEDBACK_TO_EMAIL` | Destination inbox; defaults to `hello@dkompos.com` |
+| `FEEDBACK_FROM_EMAIL` | Verified sender address; defaults to `Dkompos Feedback <feedback@dkompos.com>` for Resend |
+| `FEEDBACK_WEBHOOK_URL` | Optional generic JSON webhook fallback |
+| `FEEDBACK_WEBHOOK_TOKEN` | Optional bearer token for the webhook |
+
+Configure secrets with Wrangler:
+
+```bash
+npx wrangler pages secret put RESEND_API_KEY --project-name dkompos
+```
+
+Non-secret values can be added under **Settings -> Variables and Secrets**. If
+no delivery binding is configured, the browser opens a prefilled email draft and
+the endpoint does not store the message.
+
+Cloudflare Email Service can be used if this endpoint is moved to a Worker, or
+if Pages later supports `send_email` bindings in project configuration. The
+function already accepts an `FEEDBACK_EMAIL` binding when one is available, but
+Wrangler 4.93 does not allow that binding on Pages projects.
 
 ### Distribution
 
