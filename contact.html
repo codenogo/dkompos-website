@@ -55,103 +55,136 @@
     </header>
 
     <main class="page contact-page">
-      <p class="eyebrow">Feedback</p>
-      <h1>Tell Dkompos what happened.</h1>
-      <p>
-        Bug reports, strange library cases, DAC behaviour, DJ workflow notes,
-        and plain product instincts are all useful. The best notes include what
-        you expected, what happened, and the version of Dkompos you were using.
-      </p>
-
-      <section class="feedback-panel" aria-labelledby="feedback-form-title">
-        <div>
-          <h2 id="feedback-form-title">Send a note</h2>
-          <p>
-            This form sends your message to the Dkompos inbox. Your email is
-            optional, but include it if you want a reply.
-          </p>
+      <section class="feedback-hero" aria-labelledby="feedback-title">
+        <p class="eyebrow">Feedback</p>
+        <h1 id="feedback-title">Tell Dkompos what broke, clicked, or surprised you.</h1>
+        <p>
+          Bug reports, strange library cases, DAC behaviour, DJ workflow notes,
+          and plain product instincts are all useful. The best notes include
+          what you expected, what happened, and the version of Dkompos you were
+          using.
+        </p>
+        <div class="contact-channels" aria-label="Contact options">
+          <a class="contact-channel" href="#feedback-form-title">
+            <span>Form</span>
+            <strong>Structured note</strong>
+          </a>
+          <a class="contact-channel" href="mailto:hello@dkompos.com?subject=Dkompos%20feedback">
+            <span>Email</span>
+            <strong>hello@dkompos.com</strong>
+          </a>
         </div>
+      </section>
 
-        <form class="feedback-form" action="/api/feedback" method="post" data-feedback-form>
-          <input type="hidden" name="source" value="contact-page" />
-          <label class="field">
-            <span>Kind of note</span>
-            <select name="topic" required>
-              <option value="bug">Bug report</option>
-              <option value="audio">Audio output or signal path</option>
-              <option value="library">Library, metadata, or scanning</option>
-              <option value="dj">DJ workflow</option>
-              <option value="audiobook">Audiobooks or long-form listening</option>
-              <option value="feature">Feature request</option>
-              <option value="general">General feedback</option>
-            </select>
-          </label>
-
-          <label class="field">
-            <span>Email for reply <small>optional</small></span>
-            <input
-              type="email"
-              name="email"
-              maxlength="160"
-              autocomplete="email"
-              placeholder="you@example.com"
-            />
-          </label>
-
-          <label class="field">
-            <span>Setup context <small>optional</small></span>
-            <input
-              type="text"
-              name="context"
-              maxlength="500"
-              placeholder="Dkompos 1.5.4, macOS 14, USB DAC, FLAC library..."
-            />
-          </label>
-
-          <label class="field">
-            <span>Message</span>
-            <textarea
-              name="message"
-              minlength="10"
-              maxlength="4000"
-              rows="9"
-              required
-              placeholder="What did you expect? What happened? What would make Dkompos better?"
-            ></textarea>
-          </label>
-
-          <label class="screen-reader-trap" aria-hidden="true" hidden>
-            Company
-            <input type="text" name="company" tabindex="-1" autocomplete="off" />
-          </label>
-
-          <div class="feedback-actions">
-            <button class="button button-primary" type="submit">Send feedback</button>
-            <a class="text-link" href="mailto:hello@dkompos.com?subject=Dkompos%20feedback">
-              Email directly
-            </a>
+      <div class="feedback-layout">
+        <section class="feedback-panel" aria-labelledby="feedback-form-title">
+          <div class="panel-heading">
+            <div>
+              <p class="panel-kicker">Dkompos inbox</p>
+              <h2 id="feedback-form-title">Send a note</h2>
+              <p>
+                Your email is optional. Include it only if you want a reply.
+              </p>
+            </div>
+            <span class="panel-badge">No account required</span>
           </div>
 
-          <p class="form-status" role="status" aria-live="polite" data-feedback-status></p>
-          <noscript>
-            <p class="form-status">
-              JavaScript is not required, but if this form does not complete in
-              your browser, email
-              <a href="mailto:hello@dkompos.com?subject=Dkompos%20feedback">hello@dkompos.com</a>.
-            </p>
-          </noscript>
-        </form>
-      </section>
+          <form class="feedback-form" action="/api/feedback" method="post" data-feedback-form>
+            <input type="hidden" name="source" value="contact-page" />
+            <label class="field">
+              <span>Kind of note</span>
+              <select name="topic" required>
+                <option value="bug">Bug report</option>
+                <option value="audio">Audio output or signal path</option>
+                <option value="library">Library, metadata, or scanning</option>
+                <option value="dj">DJ workflow</option>
+                <option value="audiobook">Audiobooks or long-form listening</option>
+                <option value="feature">Feature request</option>
+                <option value="general">General feedback</option>
+              </select>
+            </label>
 
-      <section class="feedback-guidance" aria-labelledby="feedback-guidance-title">
-        <h2 id="feedback-guidance-title">What helps most</h2>
-        <ul>
-          <li>For audio issues, include output device, sample rate, and whether DSP was bypassed.</li>
-          <li>For library issues, include file type, folder shape, and what looked wrong.</li>
-          <li>For DJ workflow notes, include the set-prep step that slowed you down.</li>
-          <li>For privacy or support questions, email directly if you prefer a normal mail thread.</li>
-        </ul>
-      </section>
+            <div class="field-grid">
+              <label class="field">
+                <span>Email for reply <small>optional</small></span>
+                <input
+                  type="email"
+                  name="email"
+                  maxlength="160"
+                  autocomplete="email"
+                  placeholder="you@example.com"
+                />
+              </label>
+
+              <label class="field">
+                <span>Setup context <small>optional</small></span>
+                <input
+                  type="text"
+                  name="context"
+                  maxlength="500"
+                  placeholder="1.5.4, macOS 14, USB DAC..."
+                />
+              </label>
+            </div>
+
+            <label class="field">
+              <span>Message</span>
+              <textarea
+                name="message"
+                minlength="10"
+                maxlength="4000"
+                rows="9"
+                required
+                placeholder="What did you expect? What happened? What would make Dkompos better?"
+              ></textarea>
+            </label>
+
+            <label class="screen-reader-trap" aria-hidden="true" hidden>
+              Company
+              <input type="text" name="company" tabindex="-1" autocomplete="off" />
+            </label>
+
+            <div class="feedback-actions">
+              <button class="button button-primary" type="submit">Send feedback</button>
+              <a class="text-link" href="mailto:hello@dkompos.com?subject=Dkompos%20feedback">
+                Email directly
+              </a>
+            </div>
+
+            <p class="form-status" role="status" aria-live="polite" data-feedback-status></p>
+            <noscript>
+              <p class="form-status">
+                JavaScript is not required, but if this form does not complete in
+                your browser, email
+                <a href="mailto:hello@dkompos.com?subject=Dkompos%20feedback">hello@dkompos.com</a>.
+              </p>
+            </noscript>
+          </form>
+        </section>
+
+        <aside class="feedback-guidance" aria-labelledby="feedback-guidance-title">
+          <p class="panel-kicker">Useful detail</p>
+          <h2 id="feedback-guidance-title">What helps most</h2>
+          <ol class="feedback-list">
+            <li>
+              <span>Audio</span>
+              Output device, sample rate, and whether DSP was bypassed.
+            </li>
+            <li>
+              <span>Library</span>
+              File type, folder shape, and what looked wrong.
+            </li>
+            <li>
+              <span>DJ</span>
+              The set-prep step that slowed you down.
+            </li>
+            <li>
+              <span>Privacy</span>
+              Email directly if you prefer a normal mail thread.
+            </li>
+          </ol>
+        </aside>
+      </div>
     </main>
 
     <footer class="site-footer">
