@@ -24,7 +24,7 @@
 
     <link rel="preconnect" href="https://fonts.bunny.net" crossorigin />
     <link
-      href="https://fonts.bunny.net/css?family=inter:400,500,600,700|jetbrains-mono:400,500&display=swap"
+      href="https://fonts.bunny.net/css?family=inter:400,500,600,700|jetbrains-mono:400,500&amp;display=swap"
       rel="stylesheet"
     />
 
@@ -42,11 +42,22 @@
         "@type": "SoftwareApplication",
         "name": "Dkompos",
         "applicationCategory": "MultimediaApplication",
-        "operatingSystem": "macOS 11+",
+        "operatingSystem": "macOS 14+",
         "url": "https://www.dkompos.com/",
-        "softwareVersion": "1.5.4"
+        "softwareVersion": "1.5.5"
       },
       "hasPart": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Dkompos 1.5.5",
+          "softwareVersion": "1.5.5",
+          "operatingSystem": "macOS 14+",
+          "applicationCategory": "MultimediaApplication",
+          "datePublished": "2026-05",
+          "downloadUrl": "https://github.com/codenogo/dkompos-website/releases/download/v1.5.5/Dkompos_1.5.5_aarch64.dmg",
+          "description": "Native macOS public package with a smaller signed and notarised DMG.",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
         {
           "@type": "SoftwareApplication",
           "name": "Dkompos 1.5.4",
@@ -114,6 +125,52 @@
         Dkompos macOS releases are distributed as signed and notarised DMG
         builds. Download the latest Apple Silicon build below.
       </p>
+
+      <article class="release-entry">
+        <h2>
+          <span>v1.5.5</span>
+          <span class="date">2026 · 05</span>
+        </h2>
+        <h3>Native macOS package with a smaller signed and notarised DMG.</h3>
+        <p>
+          This build ships Dkompos as a native macOS app bundle, replacing the
+          retired Tauri shell and reducing the public Apple Silicon download
+          footprint while keeping the release signed, notarised, stapled, and
+          Gatekeeper validated.
+        </p>
+        <div class="release-actions">
+          <a
+            class="button button-primary"
+            href="https://github.com/codenogo/dkompos-website/releases/download/v1.5.5/Dkompos_1.5.5_aarch64.dmg"
+          >Download DMG</a>
+          <a class="text-link" href="https://github.com/codenogo/dkompos-website/releases/tag/v1.5.5">View release</a>
+        </div>
+        <dl class="release-facts" aria-label="Release facts">
+          <div>
+            <dt>Platform</dt>
+            <dd>macOS 14+ · Apple Silicon</dd>
+          </div>
+          <div>
+            <dt>File</dt>
+            <dd>Dkompos_1.5.5_aarch64.dmg</dd>
+          </div>
+          <div>
+            <dt>Signing</dt>
+            <dd>Developer ID · notarised · stapled</dd>
+          </div>
+          <div>
+            <dt>SHA-256</dt>
+            <dd class="checksum">0731c70b7db12f01f5bad50e1a7eee8780ad91d7c26f06726d94bbee57783dc9</dd>
+          </div>
+        </dl>
+        <ul>
+          <li>Ships as a native macOS app bundle for the public Apple Silicon release path.</li>
+          <li>Reduces the DMG download from the previous large web-shell package to about 37 MB.</li>
+          <li>Builds and packages the Rust/Swift bridge into a self-contained release bundle.</li>
+          <li>Notarises and staples both the app and the final DMG, then validates them with Gatekeeper.</li>
+          <li>Includes a standard drag-to-Applications DMG layout.</li>
+        </ul>
+      </article>
 
       <article class="release-entry">
         <h2>
@@ -274,7 +331,7 @@
           <span>kompos</span>
         </a>
         <p class="colophon">
-          v1.5.4 &nbsp;·&nbsp; Apple Silicon &nbsp;·&nbsp; © 2026
+          v1.5.5 &nbsp;·&nbsp; Apple Silicon &nbsp;·&nbsp; © 2026
         </p>
       </div>
       <nav aria-label="Footer">
