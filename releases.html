@@ -44,9 +44,20 @@
         "applicationCategory": "MultimediaApplication",
         "operatingSystem": "macOS 14+",
         "url": "https://www.dkompos.com/",
-        "softwareVersion": "1.5.5"
+        "softwareVersion": "1.5.6"
       },
       "hasPart": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Dkompos 1.5.6",
+          "softwareVersion": "1.5.6",
+          "operatingSystem": "macOS 14+",
+          "applicationCategory": "MultimediaApplication",
+          "datePublished": "2026-05",
+          "downloadUrl": "https://github.com/codenogo/dkompos-website/releases/download/v1.5.6/Dkompos_1.5.6_aarch64.dmg",
+          "description": "DJ deck, waveform, mixer, and native bridge updates.",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
         {
           "@type": "SoftwareApplication",
           "name": "Dkompos 1.5.5",
@@ -125,6 +136,51 @@
         Dkompos macOS releases are distributed as signed and notarised DMG
         builds. Download the latest Apple Silicon build below.
       </p>
+
+      <article class="release-entry">
+        <h2>
+          <span>v1.5.6</span>
+          <span class="date">2026 · 05</span>
+        </h2>
+        <h3>DJ deck, waveform, mixer, and native bridge updates.</h3>
+        <p>
+          This build deepens the native macOS DJ surface with richer deck and
+          set workflows, waveform support, mixer/audio-engine hardening, and
+          additional core bridge coverage for the Swift app.
+        </p>
+        <div class="release-actions">
+          <a
+            class="button button-primary"
+            href="https://github.com/codenogo/dkompos-website/releases/download/v1.5.6/Dkompos_1.5.6_aarch64.dmg"
+          >Download DMG</a>
+          <a class="text-link" href="https://github.com/codenogo/dkompos-website/releases/tag/v1.5.6">View release</a>
+        </div>
+        <dl class="release-facts" aria-label="Release facts">
+          <div>
+            <dt>Platform</dt>
+            <dd>macOS 14+ · Apple Silicon</dd>
+          </div>
+          <div>
+            <dt>File</dt>
+            <dd>Dkompos_1.5.6_aarch64.dmg</dd>
+          </div>
+          <div>
+            <dt>Signing</dt>
+            <dd>Developer ID · notarised · stapled</dd>
+          </div>
+          <div>
+            <dt>SHA-256</dt>
+            <dd class="checksum">2a9f98a17e0f042381ccd6456ed861f4861d51fe0f4d168c3af262babde4ed4a</dd>
+          </div>
+        </dl>
+        <ul>
+          <li>Expands the native DJ deck interface with deeper controls and richer state.</li>
+          <li>Adds waveform support to the native library workflow.</li>
+          <li>Updates DJ crate and set composition views for the native macOS app.</li>
+          <li>Hardens mixer/audio-engine behaviour for the native playback path.</li>
+          <li>Extends the Rust-to-Swift bridge and adds native routing/error coverage.</li>
+        </ul>
+      </article>
 
       <article class="release-entry">
         <h2>
@@ -331,7 +387,7 @@
           <span>kompos</span>
         </a>
         <p class="colophon">
-          v1.5.5 &nbsp;·&nbsp; Apple Silicon &nbsp;·&nbsp; © 2026
+          v1.5.6 &nbsp;·&nbsp; Apple Silicon &nbsp;·&nbsp; © 2026
         </p>
       </div>
       <nav aria-label="Footer">
