@@ -20,6 +20,9 @@ node_modules/
 # Local Cloudflare tooling cache
 .wrangler/
 
+# Local visual review artifacts
+.review/
+
 # Environment / secrets
 .env
 .env.local

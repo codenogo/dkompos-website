@@ -63,7 +63,9 @@ Then open <http://127.0.0.1:8788/contact>.
 | `assets/contact.js` | Progressive enhancement for the feedback form |
 | `functions/api/feedback.js` | Server-side feedback endpoint for Cloudflare Pages |
 | `wrangler.toml` | Cloudflare Pages project and compatibility configuration |
+| `_headers` | Security headers (CSP, HSTS, nosniff, …) applied on every route |
 | `robots.txt` / `sitemap.xml` | Search-engine plumbing |
+| `scripts/release.mjs` | One-shot current-version bump across the site |
 | `assets/brand/` | Brand mark and wordmark SVGs |
 | `assets/screens/` | Product screenshots |
 
@@ -115,3 +117,53 @@ https://github.com/codenogo/dkompos-website/releases/download/v1.5.6/Dkompos_1.5
 ```
 
 Do not commit DMG files into the website repo. Heavy binaries live in GitHub Releases; `index.html` and `releases.html` are updated with the new version, URL, size, and SHA-256 on each cut.
+
+### Cutting a new version
+
+The current version is referenced in many places (hero meta, download URLs,
+JSON-LD, footers across pages, README). Bump them all in one step:
+
+```bash
+npm run release -- 1.5.7 --size "37 MB"
+```
+
+This rewrites every current-version pointer in `index.html`, `contact.html`,
+`privacy.html`, `README.md`, and `package.json`, and refreshes the
+`sitemap.xml` `lastmod` dates. It intentionally leaves `releases.html` alone —
+that file is the version *history*, so a release means **adding** a new
+`release-entry` article (with its own SHA-256, file name, and notes) plus the
+matching `SoftwareApplication` entry in its JSON-LD.
+
+### Security headers
+
+`_headers` applies a strict Content-Security-Policy, HSTS, `nosniff`,
+`X-Frame-Options: DENY`, a locked-down `Permissions-Policy`, and a referrer
+policy on every route. The CSP allows only same-origin assets,
+`fonts.bunny.net` for the web fonts, and hash-approved inline JSON-LD blocks for
+SEO. `npm run release` refreshes those JSON-LD hashes. If you add a new external
+origin (a script, image host, analytics, etc.), update the CSP in `_headers` or
+it will be blocked.
+
+### Feedback rate limiting
+
+`functions/api/feedback.js` enforces an optional per-IP rate limit
+(5 submissions / 10 minutes) **only** when a KV namespace named
+`FEEDBACK_RATE_LIMIT` is bound to the Pages project. With no binding it is a
+no-op, so the form keeps working out of the box. To enable it:
+
+```bash
+npx wrangler kv namespace create FEEDBACK_RATE_LIMIT
+```
+
+then add the binding under **Settings -> Functions -> KV namespace bindings**
+with the variable name `FEEDBACK_RATE_LIMIT`.
+
+### Optional: minify CSS
+
+`styles.css` ships unminified and readable; Cloudflare already serves it
+Brotli-compressed. If you want a pre-minified file you can generate one on
+demand (it is not wired into the pages by default):
+
+```bash
+npm run minify:css
+```

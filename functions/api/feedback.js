@@ -10,6 +10,11 @@ const ALLOWED_TOPICS = new Map([
 
 const FALLBACK_EMAIL = 'hello@dkompos.com';
 
+// Fixed-window rate limit, only active when a KV namespace named
+// FEEDBACK_RATE_LIMIT is bound to the Pages project. No binding -> no-op.
+const RATE_LIMIT_MAX = 5;
+const RATE_LIMIT_WINDOW_SECONDS = 600;
+
 export async function onRequestPost({ request, env }) {
   const accept = request.headers.get('accept') || '';
   const wantsJson = accept.includes('application/json');
@@ -23,6 +28,19 @@ export async function onRequestPost({ request, env }) {
     const form = await request.formData();
     if (value(form, 'company')) {
       return respond({ ok: true, message: 'Received.' }, 200, wantsJson);
+    }
+
+    const limited = await isRateLimited(request, env);
+    if (limited) {
+      return respond(
+        {
+          ok: false,
+          message: 'Too many notes from this network. Wait a few minutes, or email instead.',
+          fallbackEmail: FALLBACK_EMAIL,
+        },
+        429,
+        wantsJson,
+      );
     }
 
     const feedback = normalizeFeedback(form, request);
@@ -61,6 +79,34 @@ export async function onRequestPost({ request, env }) {
 
 export function onRequestGet({ request }) {
   return Response.redirect(new URL('/contact.html', request.url).toString(), 303);
+}
+
+async function isRateLimited(request, env) {
+  const store = env.FEEDBACK_RATE_LIMIT;
+  if (!store || typeof store.get !== 'function' || typeof store.put !== 'function') {
+    return false;
+  }
+
+  const ip =
+    request.headers.get('cf-connecting-ip') ||
+    request.headers.get('x-forwarded-for') ||
+    'unknown';
+  const key = `feedback:${ip}`;
+
+  try {
+    const current = Number(await store.get(key)) || 0;
+    if (current >= RATE_LIMIT_MAX) {
+      return true;
+    }
+    await store.put(key, String(current + 1), {
+      expirationTtl: RATE_LIMIT_WINDOW_SECONDS,
+    });
+    return false;
+  } catch (error) {
+    // Never let the limiter take down the form; fail open.
+    console.error('feedback_rate_limit_failed', error);
+    return false;
+  }
 }
 
 function normalizeFeedback(form, request) {

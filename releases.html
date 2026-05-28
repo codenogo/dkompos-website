@@ -116,6 +116,7 @@
     </script>
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header" aria-label="Primary">
       <a class="brand" href="index.html" aria-label="Dkompos home">
         <img src="assets/brand/dkompos-mark-primary.svg" alt="D" />
@@ -123,18 +124,22 @@
       </a>
       <nav class="nav-links" aria-label="Site">
         <a href="index.html#audio">Audio</a>
-        <a href="releases.html">Releases</a>
+        <a href="releases.html" aria-current="page">Releases</a>
         <a href="contact.html">Feedback</a>
         <a href="index.html#download">Download</a>
       </nav>
     </header>
 
-    <main class="page">
+    <main id="main" class="page">
       <p class="eyebrow">Releases</p>
       <h1>Builds and notes.</h1>
       <p>
         Dkompos macOS releases are distributed as signed and notarised DMG
         builds. Download the latest Apple Silicon build below.
+      </p>
+      <p class="release-note">
+        Only public, signed builds are listed here. Interim and internal
+        versions are omitted, so the version sequence is not continuous.
       </p>
 
       <article class="release-entry">
@@ -392,7 +397,7 @@
       </div>
       <nav aria-label="Footer">
         <a href="privacy.html">Privacy</a>
-        <a href="releases.html">Releases</a>
+        <a href="releases.html" aria-current="page">Releases</a>
         <a href="contact.html">Feedback</a>
         <a href="mailto:hello@dkompos.com">Email</a>
       </nav>

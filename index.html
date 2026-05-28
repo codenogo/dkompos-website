@@ -160,6 +160,7 @@
     </script>
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header" aria-label="Primary">
       <a class="brand" href="/" aria-label="Dkompos home">
         <img src="assets/brand/dkompos-mark-primary.svg" alt="D" />
@@ -173,7 +174,7 @@
       </nav>
     </header>
 
-    <main>
+    <main id="main">
       <!-- ========================================================
            Hero — split: type left, contained screenshot right
            ======================================================== -->
@@ -190,13 +191,13 @@
             <div
               class="hero-signal"
               role="img"
-              aria-label="Now listening: FLAC 24/96, direct output at 96 kHz, DSP bypassed"
+              aria-label="Now listening: FLAC 24/44.1, direct output, DSP bypassed"
             >
               <span class="live" aria-hidden="true"></span>
               <span class="label">Listening</span>
               <span class="v">FLAC</span>
               <span class="sep">·</span>
-              <span class="v-on">24 / 96</span>
+              <span class="v-on">24 / 44.1</span>
               <span class="sep">·</span>
               <span class="v-on">DSP bypass</span>
             </div>
@@ -319,6 +320,20 @@
             <div class="full"><dt>Loudness</dt><dd>−16.5 LUFS</dd></div>
           </dl>
         </div>
+
+        <figure class="section-shot">
+          <img
+            src="assets/screens/audio-quality.png"
+            width="1200"
+            height="899"
+            loading="lazy"
+            decoding="async"
+            alt="Dkompos home with on-device mood sessions: Focus, Energize, Hi-Res session, Wind down, and Late night tiles generated from local analysis, above a card that learns your taste the more you listen."
+          />
+          <figcaption class="section-shot-cap">
+            Mood sessions &nbsp;·&nbsp; learned on-device from local analysis
+          </figcaption>
+        </figure>
       </section>
 
       <!-- ========================================================
