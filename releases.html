@@ -44,9 +44,20 @@
         "applicationCategory": "MultimediaApplication",
         "operatingSystem": "macOS 14+",
         "url": "https://www.dkompos.com/",
-        "softwareVersion": "1.5.6"
+        "softwareVersion": "1.5.7"
       },
       "hasPart": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Dkompos 1.5.7",
+          "softwareVersion": "1.5.7",
+          "operatingSystem": "macOS 14+",
+          "applicationCategory": "MultimediaApplication",
+          "datePublished": "2026-06",
+          "downloadUrl": "https://github.com/codenogo/dkompos-website/releases/download/v1.5.7/Dkompos_1.5.7_aarch64.dmg",
+          "description": "Installed-app startup, resource packaging, and app icon hardening.",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
         {
           "@type": "SoftwareApplication",
           "name": "Dkompos 1.5.6",
@@ -141,6 +152,56 @@
         Only public, signed builds are listed here. Interim and internal
         versions are omitted, so the version sequence is not continuous.
       </p>
+
+      <article class="release-entry">
+        <h2>
+          <span>v1.5.7</span>
+          <span class="date">2026 · 06</span>
+        </h2>
+        <h3>Installed-app startup, resource packaging, and app icon hardening.</h3>
+        <p>
+          This build fixes an installed-app startup crash caused by SwiftPM
+          resource lookup, tightens release packaging checks for bundled app
+          resources, refreshes the generated Swift bridge, and ships a cleaned
+          macOS app icon without the white corner plate.
+        </p>
+        <div class="release-actions">
+          <a
+            class="button button-primary"
+            href="https://github.com/codenogo/dkompos-website/releases/download/v1.5.7/Dkompos_1.5.7_aarch64.dmg"
+          >Download DMG</a>
+          <a class="text-link" href="https://github.com/codenogo/dkompos-website/releases/tag/v1.5.7">View release</a>
+        </div>
+        <dl class="release-facts" aria-label="Release facts">
+          <div>
+            <dt>Platform</dt>
+            <dd>macOS 14+ · Apple Silicon</dd>
+          </div>
+          <div>
+            <dt>File</dt>
+            <dd>Dkompos_1.5.7_aarch64.dmg</dd>
+          </div>
+          <div>
+            <dt>Size</dt>
+            <dd>38 MB</dd>
+          </div>
+          <div>
+            <dt>Signing</dt>
+            <dd>Developer ID · notarised · stapled</dd>
+          </div>
+          <div>
+            <dt>SHA-256</dt>
+            <dd class="checksum">2aa0b2bb5935e28ff0b1cb1319f8019ccef698a7a1904c6bfdcfe6b83cded715</dd>
+          </div>
+        </dl>
+        <ul>
+          <li>Fixes the installed-app crash from SwiftPM resource bundle lookup on customer Macs.</li>
+          <li>Loads the brand mark from the signed app resource bundle instead of the build-machine fallback.</li>
+          <li>Makes release packaging fail fast when the required resource bundle or brand asset is missing.</li>
+          <li>Refreshes the app icon so transparent corners no longer render as an opaque white plate.</li>
+          <li>Refreshes generated Swift bridge bindings and UniFFI checksum guards.</li>
+        </ul>
+      </article>
 
       <article class="release-entry">
         <h2>
@@ -392,7 +453,7 @@
           <span>kompos</span>
         </a>
         <p class="colophon">
-          v1.5.6 &nbsp;·&nbsp; Apple Silicon &nbsp;·&nbsp; © 2026
+          v1.5.7 &nbsp;·&nbsp; Apple Silicon &nbsp;·&nbsp; © 2026
         </p>
       </div>
       <nav aria-label="Footer">
