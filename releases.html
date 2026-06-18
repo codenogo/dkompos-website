@@ -44,9 +44,20 @@
         "applicationCategory": "MultimediaApplication",
         "operatingSystem": "macOS 14+",
         "url": "https://www.dkompos.com/",
-        "softwareVersion": "1.5.7"
+        "softwareVersion": "1.5.8"
       },
       "hasPart": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Dkompos 1.5.8",
+          "softwareVersion": "1.5.8",
+          "operatingSystem": "macOS 14+",
+          "applicationCategory": "MultimediaApplication",
+          "datePublished": "2026-06",
+          "downloadUrl": "https://github.com/codenogo/dkompos-website/releases/download/v1.5.8/Dkompos_1.5.8_aarch64.dmg",
+          "description": "Native macOS visual state polish for artist focus and album track-list hover.",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
         {
           "@type": "SoftwareApplication",
           "name": "Dkompos 1.5.7",
@@ -152,6 +163,54 @@
         Only public, signed builds are listed here. Interim and internal
         versions are omitted, so the version sequence is not continuous.
       </p>
+
+      <article class="release-entry">
+        <h2>
+          <span>v1.5.8</span>
+          <span class="date">2026 · 06</span>
+        </h2>
+        <h3>Artist-card focus and track-list hover polish.</h3>
+        <p>
+          This build tightens native macOS visual states after the 1.5.7 QA
+          pass, so focused artist cards no longer look selected and album track
+          rows no longer keep stale hover backgrounds as AppKit recycles them.
+        </p>
+        <div class="release-actions">
+          <a
+            class="button button-primary"
+            href="https://github.com/codenogo/dkompos-website/releases/download/v1.5.8/Dkompos_1.5.8_aarch64.dmg"
+          >Download DMG</a>
+          <a class="text-link" href="https://github.com/codenogo/dkompos-website/releases/tag/v1.5.8">View release</a>
+        </div>
+        <dl class="release-facts" aria-label="Release facts">
+          <div>
+            <dt>Platform</dt>
+            <dd>macOS 14+ · Apple Silicon</dd>
+          </div>
+          <div>
+            <dt>File</dt>
+            <dd>Dkompos_1.5.8_aarch64.dmg</dd>
+          </div>
+          <div>
+            <dt>Size</dt>
+            <dd>38 MB</dd>
+          </div>
+          <div>
+            <dt>Signing</dt>
+            <dd>Developer ID · notarised · stapled</dd>
+          </div>
+          <div>
+            <dt>SHA-256</dt>
+            <dd class="checksum">bab6abbf8f9bb4c716116368158fd649d5cef0ce0510e6fce62f38fe7fb69369</dd>
+          </div>
+        </dl>
+        <ul>
+          <li>Removes the default macOS focus ring from artist cards so keyboard focus does not look like a blue selected or playing border.</li>
+          <li>Refreshes reused album-detail track rows from the actual pointer position so hover highlights do not stick to unrelated rows.</li>
+          <li>Bumps the native release bundle metadata to version 1.5.8 and build 158.</li>
+          <li>Ships signed, notarised, stapled, and Gatekeeper-validated DMG and app artifacts.</li>
+        </ul>
+      </article>
 
       <article class="release-entry">
         <h2>
@@ -457,7 +516,7 @@
           <span>kompos</span>
         </a>
         <p class="colophon">
-          v1.5.7 &nbsp;·&nbsp; Apple Silicon &nbsp;·&nbsp; © 2026
+          v1.5.8 &nbsp;·&nbsp; Apple Silicon &nbsp;·&nbsp; © 2026
         </p>
       </div>
       <nav aria-label="Footer">

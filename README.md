@@ -22,7 +22,7 @@ Dkompos is a free, signed, notarised macOS application for people who care about
 | **OS** | macOS 14 or newer |
 | **CPU** | Apple Silicon (M1 and later) |
 | **Distribution** | Signed Developer ID, Apple-notarised, stapled DMG |
-| **Current version** | 1.5.7 |
+| **Current version** | 1.5.8 |
 
 The latest DMG, SHA-256 checksum, and full release notes are at **[dkompos.com/releases.html](https://www.dkompos.com/releases.html)**.
 
@@ -113,7 +113,7 @@ Wrangler 4.93 does not allow that binding on Pages projects.
 The public Download CTA points at the notarised GitHub Release asset for the current version:
 
 ```text
-https://github.com/codenogo/dkompos-website/releases/download/v1.5.7/Dkompos_1.5.7_aarch64.dmg
+https://github.com/codenogo/dkompos-website/releases/download/v1.5.8/Dkompos_1.5.8_aarch64.dmg
 ```
 
 Do not commit DMG files into the website repo. Heavy binaries live in GitHub Releases; `index.html` and `releases.html` are updated with the new version, URL, size, and SHA-256 on each cut.
