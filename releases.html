@@ -55,7 +55,7 @@
           "applicationCategory": "MultimediaApplication",
           "datePublished": "2026-06",
           "downloadUrl": "https://github.com/codenogo/dkompos-website/releases/download/v1.5.7/Dkompos_1.5.7_aarch64.dmg",
-          "description": "Installed-app startup, resource packaging, and app icon hardening.",
+          "description": "First-run onboarding, library creation, installed-app resources, and app icon hardening.",
           "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
         },
         {
@@ -158,12 +158,13 @@
           <span>v1.5.7</span>
           <span class="date">2026 · 06</span>
         </h2>
-        <h3>Installed-app startup, resource packaging, and app icon hardening.</h3>
+        <h3>First-run onboarding, library creation, and app icon hardening.</h3>
         <p>
-          This build fixes an installed-app startup crash caused by SwiftPM
-          resource lookup, tightens release packaging checks for bundled app
-          resources, refreshes the generated Swift bridge, and ships a cleaned
-          macOS app icon without the white corner plate.
+          This build now opens a per-user library database on first launch,
+          gives empty libraries a clear Add Music Folder flow, avoids leading
+          with disabled mood cards before analysis is ready, fixes installed-app
+          resource lookup, and ships a cleaned macOS app icon without the white
+          corner plate.
         </p>
         <div class="release-actions">
           <a
@@ -191,10 +192,13 @@
           </div>
           <div>
             <dt>SHA-256</dt>
-            <dd class="checksum">2aa0b2bb5935e28ff0b1cb1319f8019ccef698a7a1904c6bfdcfe6b83cded715</dd>
+            <dd class="checksum">992d857ce031609c5bdf305712d95e1aeffd35f14f50072eafc096b7f9479109</dd>
           </div>
         </dl>
         <ul>
+          <li>Opens the per-user macOS Application Support library database on first launch.</li>
+          <li>Replaces the empty-library dead end with a direct Add Music Folder onboarding action.</li>
+          <li>Suppresses first-run "library is not open" notices and keeps disabled mood shelves from leading the home page.</li>
           <li>Fixes the installed-app crash from SwiftPM resource bundle lookup on customer Macs.</li>
           <li>Loads the brand mark from the signed app resource bundle instead of the build-machine fallback.</li>
           <li>Makes release packaging fail fast when the required resource bundle or brand asset is missing.</li>

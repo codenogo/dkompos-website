@@ -7,4 +7,4 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), microphone=(), camera=(), interest-cohort=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data:; style-src 'self' https://fonts.bunny.net; font-src https://fonts.bunny.net; script-src 'self' 'sha256-ezUeZUvR14eL+lio81bZetFp2VLF7OkpUyimrCbdoZY=' 'sha256-g1uVwcpauDD17Ayi/Fi9+fufCGMH8TJ5k++kpx2nRA8=' 'sha256-2hSbRPagEEkWggIhPFQ4e/iPOOQQLndDQg9BF5gUyW0='; connect-src 'self'; form-action 'self'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data:; style-src 'self' https://fonts.bunny.net; font-src https://fonts.bunny.net; script-src 'self' 'sha256-ezUeZUvR14eL+lio81bZetFp2VLF7OkpUyimrCbdoZY=' 'sha256-g1uVwcpauDD17Ayi/Fi9+fufCGMH8TJ5k++kpx2nRA8=' 'sha256-MCq/I2XDX4OK+xHe67Xs/bEaTGrLRNjZhJY8m0XLr9Q='; connect-src 'self'; form-action 'self'; upgrade-insecure-requests
