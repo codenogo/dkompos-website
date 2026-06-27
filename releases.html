@@ -44,9 +44,20 @@
         "applicationCategory": "MultimediaApplication",
         "operatingSystem": "macOS 14+",
         "url": "https://www.dkompos.com/",
-        "softwareVersion": "1.5.8"
+        "softwareVersion": "1.5.9"
       },
       "hasPart": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Dkompos 1.5.9",
+          "softwareVersion": "1.5.9",
+          "operatingSystem": "macOS 14+",
+          "applicationCategory": "MultimediaApplication",
+          "datePublished": "2026-06",
+          "downloadUrl": "https://github.com/codenogo/dkompos-website/releases/download/v1.5.9/Dkompos_1.5.9_aarch64.dmg",
+          "description": "Audiobook import routing, Spotify-inspired UI polish, and immediate playback controls.",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
         {
           "@type": "SoftwareApplication",
           "name": "Dkompos 1.5.8",
@@ -163,6 +174,58 @@
         Only public, signed builds are listed here. Interim and internal
         versions are omitted, so the version sequence is not continuous.
       </p>
+
+      <article class="release-entry">
+        <h2>
+          <span>v1.5.9</span>
+          <span class="date">2026 · 06</span>
+        </h2>
+        <h3>Audiobook imports, cleaner music surfaces, and playback control polish.</h3>
+        <p>
+          This build tightens the native macOS music experience with calmer
+          Spotify-inspired library surfaces, fixes audiobook import routing so
+          audiobook folders and files stay out of music tracks, and makes
+          scrubber and volume interactions respond from the clicked position.
+        </p>
+        <div class="release-actions">
+          <a
+            class="button button-primary"
+            href="https://github.com/codenogo/dkompos-website/releases/download/v1.5.9/Dkompos_1.5.9_aarch64.dmg"
+          >Download DMG</a>
+          <a class="text-link" href="https://github.com/codenogo/dkompos-website/releases/tag/v1.5.9">View release</a>
+        </div>
+        <dl class="release-facts" aria-label="Release facts">
+          <div>
+            <dt>Platform</dt>
+            <dd>macOS 14+ · Apple Silicon</dd>
+          </div>
+          <div>
+            <dt>File</dt>
+            <dd>Dkompos_1.5.9_aarch64.dmg</dd>
+          </div>
+          <div>
+            <dt>Size</dt>
+            <dd>38 MB</dd>
+          </div>
+          <div>
+            <dt>Signing</dt>
+            <dd>Developer ID · notarised · stapled</dd>
+          </div>
+          <div>
+            <dt>SHA-256</dt>
+            <dd class="checksum">929fbddad48b8a787d9a2916f926d3a18d026e06d87c7dcd134f39b2de528454</dd>
+          </div>
+        </dl>
+        <ul>
+          <li>Adds native audiobook folder and file import actions backed by the audiobook import pipeline.</li>
+          <li>Keeps audiobook folder imports out of the music-library folder scanner.</li>
+          <li>Refines home shelves, search, album detail spacing, genre cards, and player controls toward a calmer Spotify-like pattern.</li>
+          <li>Removes default blue focus borders and oversized or duplicated play controls from library surfaces.</li>
+          <li>Makes scrubber and volume click or drag feedback move immediately from the clicked position.</li>
+          <li>Updates the macOS app icon assets for the 1.5.9 release package.</li>
+          <li>Ships signed, notarised, stapled, and Gatekeeper-validated DMG and app artifacts.</li>
+        </ul>
+      </article>
 
       <article class="release-entry">
         <h2>
@@ -516,7 +579,7 @@
           <span>kompos</span>
         </a>
         <p class="colophon">
-          v1.5.8 &nbsp;·&nbsp; Apple Silicon &nbsp;·&nbsp; © 2026
+          v1.5.9 &nbsp;·&nbsp; Apple Silicon &nbsp;·&nbsp; © 2026
         </p>
       </div>
       <nav aria-label="Footer">

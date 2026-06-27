@@ -1,6 +1,6 @@
 {
   "name": "dkompos-website",
-  "version": "1.5.8",
+  "version": "1.5.9",
   "private": true,
   "description": "Marketing site and public release DMGs for the Dkompos macOS app.",
   "type": "module",
