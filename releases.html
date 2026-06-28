@@ -180,11 +180,12 @@
           <span>v1.5.9</span>
           <span class="date">2026 · 06</span>
         </h2>
-        <h3>Audiobook imports, cleaner music surfaces, and playback control polish.</h3>
+        <h3>Audiobook imports, album classification, and playback control polish.</h3>
         <p>
           This build tightens the native macOS music experience with calmer
           Spotify-inspired library surfaces, fixes audiobook import routing so
-          audiobook folders and files stay out of music tracks, and makes
+          audiobook folders and files stay out of music tracks, repairs album
+          classification so one-track singles no longer flood Albums, and makes
           scrubber and volume interactions respond from the clicked position.
         </p>
         <div class="release-actions">
@@ -213,12 +214,13 @@
           </div>
           <div>
             <dt>SHA-256</dt>
-            <dd class="checksum">929fbddad48b8a787d9a2916f926d3a18d026e06d87c7dcd134f39b2de528454</dd>
+            <dd class="checksum">656ac2cc41d4c82e84986baa55535f7233a47edcf5bdb7e384e03922ec823c1a</dd>
           </div>
         </dl>
         <ul>
           <li>Adds native audiobook folder and file import actions backed by the audiobook import pipeline.</li>
           <li>Keeps audiobook folder imports out of the music-library folder scanner.</li>
+          <li>Classifies only album-shaped music releases in Albums, genre albums, artist albums, and Hi-Res album views.</li>
           <li>Refines home shelves, search, album detail spacing, genre cards, and player controls toward a calmer Spotify-like pattern.</li>
           <li>Removes default blue focus borders and oversized or duplicated play controls from library surfaces.</li>
           <li>Makes scrubber and volume click or drag feedback move immediately from the clicked position.</li>
